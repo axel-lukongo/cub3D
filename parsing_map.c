@@ -38,7 +38,7 @@ int check_doublons(t_data *data)
 			|| data->file[i][j] == 'E' || data->file[i][j] == 'W')
 			{
 			// data->posX = j;
-				// data->posY = i;
+			// 	data->posY = i;
 				count++;
 			}
 		}

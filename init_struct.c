@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:28:57 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/16 20:27:47 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/19 19:35:11 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_struct(t_data *data)
 {
 	
 	data->posX = 22.0;
-	data->posY = 11.5;
+	data->posY = 10.5;
 	data->dirX = -1.0;
 	data->dirY = 0.0;
 	data->planeX = 0.0;
@@ -39,8 +39,9 @@ int init_texture(t_data *data)
 	i = -1;
 	while (++i < 8)
 	{
+		// printf("-----h * w : %ld-----\n", sizeof(int) * (texHeight * texWidth));
 		data->texture[i] = (int *)malloc(sizeof(int) * (texHeight * texWidth));
-		if (!data->texture)
+		if (!data->texture[i])
 			return (ERROR);
 	}
 	i = -1;
@@ -66,7 +67,7 @@ int	init_buf(t_data *data)
 		while (j++ < width)
 			data->buf[i][j] = 0;
 	}
-	data->texture = (int **)malloc(sizeof(int *) * 8);
+	data->texture = (int **)malloc(sizeof(int *) * texHeight);
 	if (!data->texture)
 		return (ERROR);
 	if(init_texture(data) == ERROR)

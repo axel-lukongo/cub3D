@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/17 13:34:14 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/19 20:14:18 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void	calc(t_data *data)
 			drawEnd = height - 1;
 
 		// texturing calculations
-		int texNum = data->map[mapX][mapY] - 48;
+		int texNum = data->map[mapX][mapY] - 49;
 
 		// calculate value of wallX
 		double wallX;
@@ -163,7 +163,7 @@ void	calc(t_data *data)
 			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
 			int texY = (int)texPos & (texHeight - 1);
 			texPos += step;
-			int color = data->texture[texNum][texHeight * texY + texX];
+			u_int32_t color = data->texture[texNum][texHeight * texY + texX];
 			// make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
 			if (side == 1)
 				color = (color >> 1) & 8355711;

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:59:09 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/16 20:16:11 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/19 12:40:51 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	draw(t_data *data)
 		x = 0;
 		while (x < width)
 		{
+			
 			data->img.data[y * width + x] = data->buf[y][x];
 			x++;
 		}

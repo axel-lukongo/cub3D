@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/16 20:01:23 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/17 13:34:14 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	calc(t_data *data)
 				side = 1;
 			}
 			//Check if ray has hit a wall
-			if (worldMap[mapX][mapY] > 0) hit = 1;
+			if (data->map[mapX][mapY] > '0') hit = 1;
 		}
 		if (side == 0)
 			perpWallDist = (mapX - data->posX + (1 - stepX) / 2) / rayDirX;
@@ -137,7 +137,7 @@ void	calc(t_data *data)
 			drawEnd = height - 1;
 
 		// texturing calculations
-		int texNum = worldMap[mapX][mapY];
+		int texNum = data->map[mapX][mapY] - 48;
 
 		// calculate value of wallX
 		double wallX;
@@ -181,29 +181,39 @@ int	main_loop(t_data *data)
 	return (0);
 }
 
+/**
+ * in the main function i initialize everything
+
+
+ * @init_file: i initalize my map,
+   i save the information bellow the map(color, texture...),
+   and i parse my map.
+
+   
+ * @param ac 
+ * @param av 
+ * @return int 
+ */
 int	main(int ac, char **av)
 {
 	t_data data;
 	data.mlx = mlx_init();
 
-	init_struct(&data);
-	if (init_buf(&data) == ERROR)
-		return(ERROR);
 	if ((init_file(&data, av[1]) == ERROR) || ac != 2 || !data.mlx)
 	{
 		printf("\033[1;31mERROR\n\033[0m");
 		free_map(&data);
 		return(0);
-	}	
+	}
+	init_struct(&data);
+	if (init_buf(&data) == ERROR)
+		return(ERROR);
 	load_texture(&data);
-	data.win = mlx_new_window(data.mlx, width, height, "mlx");
-
-	data.img.img = mlx_new_image(data.mlx, width, height);
+	data.win = mlx_new_window(data.mlx, width, height, "mlx");//i init my window
+	data.img.img = mlx_new_image(data.mlx, width, height); //i init my image
 	data.img.data = (int *)mlx_get_data_addr(data.img.img, &data.img.bpp, &data.img.size_l, &data.img.endian);
-
-	mlx_loop_hook(data.mlx, &main_loop, &data);
-	mlx_key_hook(data.win,&key_press, &data);
-
+	mlx_loop_hook(data.mlx, &main_loop, &data);//this is where every thing start
+	mlx_key_hook(data.win,&key_press, &data);//here i manage my key
 	mlx_loop(data.mlx);
 }
  

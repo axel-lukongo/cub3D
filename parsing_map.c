@@ -37,8 +37,8 @@ int check_doublons(t_data *data)
 			if (data->file[i][j] == 'N' || data->file[i][j] == 'S'
 			|| data->file[i][j] == 'E' || data->file[i][j] == 'W')
 			{
-				data->posX = j;
-				data->posY = i;
+			// data->posX = j;
+				// data->posY = i;
 				count++;
 			}
 		}

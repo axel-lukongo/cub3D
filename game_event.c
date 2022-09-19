@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:08:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/16 19:31:51 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/17 13:36:29 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,10 @@ int	key_press(int key, t_data *data)
 		data->planeY = oldPlaneX * sin(data->rotSpeed) + data->planeY * cos(data->rotSpeed);
 	}
 	if (key == K_ESC)
+	{
+		close_my_game(data);
 		exit(0);
+	}
 	mlx_clear_window(data->mlx, data->win);
 	main_loop(data);
 	return (0);

@@ -65,6 +65,10 @@ typedef struct	s_data
 	int		col;
 	int		begin_map;
 	char	**map;
+	int		left_rotate;
+	int		right_rotate;
+	int		go_forwar;
+	int		go_back;
 }				t_data;
 
 int		key_press(int key, t_data *data);
@@ -83,5 +87,6 @@ int		ft_strlen(char *s);
 int		ft_strlen2(char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		check_texture(t_data *data);
+int		ft_keys_release(int	keycode, t_data	*data);
 
 #endif // !CUB3D_H

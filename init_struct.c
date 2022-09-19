@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:28:57 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/19 19:35:11 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/19 20:53:38 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ void	init_struct(t_data *data)
 	data->re_buf = 0;
 	data->moveSpeed = 0.05;
 	data->rotSpeed = 0.05;
+	data->left_rotate = 0;
+	data->right_rotate = 0;
+	data->go_forwar = 0;
+	data->go_back = 0;
 }
 
 //i init my texture

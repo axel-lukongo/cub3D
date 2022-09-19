@@ -6,33 +6,65 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:08:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/19 20:06:54 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/19 21:01:14 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"cub3d.h"
 
+int	ft_keys_release(int	keycode, t_data	*data)
+{
+	if (keycode == K_W)  //linux QWERTY: 119, linux AZERTY: 122
+	{
+		printf("forward released\n");
+		data->go_forwar = 0;
+	}
+	else if (keycode == K_S)
+	{
+		printf("S = back released\n");
+		data->go_back = 0;
+	}
+	if (keycode == K_D)
+		data->right_rotate = 0;
+	else if (keycode == K_A)  //linux QWERTY: 97, linux AZERTY: 113
+		data->left_rotate = 0;
+	// else if (keycode == XK_Right)
+	// {
+	// 	printf("release rotate right\n");
+	// 	data->rot_right = 0;
+	// }
+	// else if (keycode == XK_Left)
+	// {
+	// 	printf("release rotate left\n");
+	// 	data->rot_left = 0;
+	// }
+	return (0);
+}
+
 int	key_press(int key, t_data *data)
 {
 	if (key == K_W)
 	{
-		if (!data->map[(int)(data->posX + data->dirX * data->moveSpeed)][(int)(data->posY)])
+		data->go_forwar = 1;
+		if (data->map[(int)(data->posX + data->dirX * data->moveSpeed)][(int)(data->posY)] == '0')
 			data->posX += data->dirX * data->moveSpeed;
-		if (!data->map[(int)(data->posX)][(int)(data->posY + data->dirY * data->moveSpeed)])
+		if (data->map[(int)(data->posX)][(int)(data->posY + data->dirY * data->moveSpeed)] == '0')
 			data->posY += data->dirY * data->moveSpeed;
 	}
 	//move backwards if no wall behind you
 	if (key == K_S)
 	{
-		if (!data->map[(int)(data->posX - data->dirX * data->moveSpeed)][(int)(data->posY)])
+		data->go_back = 1;
+		if (data->map[(int)(data->posX - data->dirX * data->moveSpeed)][(int)(data->posY)] == '0')
 			data->posX -= data->dirX * data->moveSpeed;
-		if (!data->map[(int)(data->posX)][(int)(data->posY - data->dirY * data->moveSpeed)])
+		if (data->map[(int)(data->posX)][(int)(data->posY - data->dirY * data->moveSpeed)] == '0')
 			data->posY -= data->dirY * data->moveSpeed;
 	}
 	//rotate to the right
 	if (key == K_D)
 	{
 		//both camera direction and camera plane must be rotated
+		data->right_rotate = 1;
 		double oldDirX = data->dirX;
 		data->dirX = data->dirX * cos(-data->rotSpeed) - data->dirY * sin(-data->rotSpeed);
 		data->dirY = oldDirX * sin(-data->rotSpeed) + data->dirY * cos(-data->rotSpeed);
@@ -44,6 +76,7 @@ int	key_press(int key, t_data *data)
 	if (key == K_A)
 	{
 		//both camera direction and camera plane must be rotated
+		data->left_rotate = 1;
 		double oldDirX = data->dirX;
 		data->dirX = data->dirX * cos(data->rotSpeed) - data->dirY * sin(data->rotSpeed);
 		data->dirY = oldDirX * sin(data->rotSpeed) + data->dirY * cos(data->rotSpeed);

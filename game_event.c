@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:08:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/20 16:05:36 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:34:39 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_keys_release(int	keycode, t_data	*data)
 
 int	key_press(int key, t_data *data)
 {
-	printf("---------dirX: %f,  dirY: %f ------\n", data->dirX, data->dirY);
+	// printf("---------dirX: %f,  dirY: %f ------\n", data->dirX, data->dirY);
 	if (key == K_W)
 	{
 		data->go_forwar = 1;

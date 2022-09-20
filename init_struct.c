@@ -6,14 +6,13 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:28:57 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/20 16:26:13 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:39:18 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"cub3d.h"
 
-// int	g_img_width;
-// int	g_img_height;
+
 
 //i init my variable
 void	init_struct(t_data *data)
@@ -33,6 +32,10 @@ void	init_struct(t_data *data)
 	data->go_forwar = 0;
 	data->go_back = 0;
 }
+
+
+
+
 
 //i init my texture
 int init_texture(t_data *data)
@@ -56,6 +59,24 @@ int init_texture(t_data *data)
 	}
 	return(GOOD);
 }
+
+
+
+
+void init_raycast(t_data *data, int x)
+{
+	data->raycast.cameraX = 2 * x / (double)width - 1;
+		data->raycast.rayDirX = data->dirX + data->planeX * data->raycast.cameraX;
+		data->raycast.rayDirY = data->dirY + data->planeY * data->raycast.cameraX;
+		data->raycast.mapX = (int)data->posX;
+		data->raycast.mapY = (int)data->posY;
+		data->raycast.deltaDistX = fabs(1 / data->raycast.rayDirX);
+		data->raycast.deltaDistY = fabs(1 / data->raycast.rayDirY);
+}
+
+
+
+
 
 // i init the buffer
 int	init_buf(t_data *data)

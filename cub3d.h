@@ -39,6 +39,36 @@ typedef struct	s_img
 	int		img_height;
 }				t_img;
 
+typedef struct	s_raycast
+{
+	double	cameraX;
+	double	rayDirX;
+	double	rayDirY;
+	int	mapX;
+	int	mapY;
+	//length of ray from current position to next x or y-side
+	double	sideDistX;
+	double	sideDistY;
+	//length of ray from one x or y-side to next x or y-side
+	double	deltaDistX;
+	double	deltaDistY;
+	double	perpWallDist;
+
+	//what direction to step in x or y direction (either +1 or -1)
+	int	stepX;
+	int	stepY;
+	
+	//it tell me if i hit a wall
+	int	hit;
+
+	//was a NS or a EW wall data->raycast.hit?
+	int side;
+
+	//Calculate height of line to draw on screen
+	int	lineHeight;
+
+}	data_raycast;
+
 typedef struct	s_data
 {
 	void	*wall;
@@ -52,7 +82,6 @@ typedef struct	s_data
 	double	planeY;
 	void	*mlx;
 	void	*win;
-	t_img	img;
 	int		buf[height][width];
 	int		**texture;
 	double	moveSpeed;
@@ -71,6 +100,8 @@ typedef struct	s_data
 	int		right_rotate;
 	int		go_forwar;
 	int		go_back;
+	data_raycast	raycast;
+	t_img	img;
 }				t_data;
 
 int		key_press(int key, t_data *data);
@@ -79,6 +110,7 @@ void	load_image(t_data *data, int *texture, char *path, t_img *img);
 void	load_texture(t_data *data);
 void	draw(t_data *data);
 void	init_struct(t_data *data);
+void	init_raycast(t_data *data, int x);
 int		init_buf(t_data *data);
 void	destroy(t_data *data);
 void	close_my_game(t_data *data);
@@ -90,5 +122,7 @@ int		ft_strlen2(char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		check_texture(t_data *data);
 int		ft_keys_release(int	keycode, t_data	*data);
+void	define_step(t_data *data);
+void	define_hit(t_data *data);
 
 #endif // !CUB3D_H

@@ -11,6 +11,7 @@ SRCS =	main.c\
 		parsing_texture.c\
 		my_draw.c\
 		my_free.c\
+		ft_raycast.c\
 		game_event.c\
 		gnl/get_next_line.c\
 		gnl/get_next_line_utils.c\

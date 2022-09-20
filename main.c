@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/19 20:51:34 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:04:02 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ void	calc(t_data *data)
 			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
 			int texY = (int)texPos & (texHeight - 1);
 			texPos += step;
+			// printf("------------texnum : %d\n", texNum);
 			u_int32_t color = data->texture[texNum][texHeight * texY + texX];
 			// make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
 			if (side == 1)
@@ -145,9 +146,18 @@ void	calc(t_data *data)
 	}
 }
 
-int	main_loop(t_data *data)
+/**
+ * @calc i init every variable who i need for draw in 3D.
+ * @draw when my variable has been calculate i will draw i column according to my variable
+ * i do this in loop until i close my game.
+ * 
+ * @param data 
+ * @return int 
+ */
+int	start_game(t_data *data)
 {
 	calc(data);
+	// printf("---------------posX: %d , posY: %d----------- \n", (int)data->posX, (int)data->posY);
 	draw(data);
 	return (0);
 }
@@ -183,11 +193,8 @@ int	main(int ac, char **av)
 	data.win = mlx_new_window(data.mlx, width, height, "mlx");//i init my window
 	data.img.img = mlx_new_image(data.mlx, width, height); //i init my image
 	data.img.data = (int *)mlx_get_data_addr(data.img.img, &data.img.bpp, &data.img.size_l, &data.img.endian);
-	mlx_loop_hook(data.mlx, &main_loop, &data);//this is where every thing start
-	// mlx_key_hook(data.win,&key_press, &data);//here i manage my key
-	// mlx_hook(game->mlx_win, 17, 0L, ft_close_cross, game);
-	mlx_hook(data.win, 2, 1L << 0, key_press, &data);
+	mlx_loop_hook(data.mlx, &start_game, &data);//this is where every thing start
+	mlx_hook(data.win, 2, 1L << 0, key_press, &data); 
 	mlx_hook(data.win, 3, 1L << 1, ft_keys_release, &data);
 	mlx_loop(data.mlx);
 }
- 

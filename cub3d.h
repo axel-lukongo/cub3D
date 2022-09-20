@@ -21,6 +21,8 @@
 #define height 400
 #define K_A 97
 #define K_D 100
+#define K_LEFT 65361
+#define K_RIGHT 65363
 #define K_W 119
 #define K_S 115
 #define K_ESC 65307
@@ -72,7 +74,7 @@ typedef struct	s_data
 }				t_data;
 
 int		key_press(int key, t_data *data);
-int		main_loop(t_data *data);
+int		start_game(t_data *data);
 void	load_image(t_data *data, int *texture, char *path, t_img *img);
 void	load_texture(t_data *data);
 void	draw(t_data *data);

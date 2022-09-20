@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 01:40:22 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/16 19:49:50 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:22:54 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ void	count_line(char *file, t_data *data)
 	nb_line = 0;
 	fd = open(file, O_RDONLY);
 	str = get_next_line(fd);
-	data->col = ft_strlen(str);
+	data->col = 0;
 	while (str)
 	{
+		if (ft_strlen(str) > data->col)
+			data->col = ft_strlen(str);
 		nb_line++;
 		free(str);
 		str = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:08:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/19 21:01:14 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:05:36 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ int	ft_keys_release(int	keycode, t_data	*data)
 {
 	if (keycode == K_W)  //linux QWERTY: 119, linux AZERTY: 122
 	{
-		printf("forward released\n");
+		// printf("forward released\n");
 		data->go_forwar = 0;
 	}
 	else if (keycode == K_S)
 	{
-		printf("S = back released\n");
+		// printf("S = back released\n");
 		data->go_back = 0;
 	}
-	if (keycode == K_D)
+	if (keycode == K_RIGHT)
 		data->right_rotate = 0;
-	else if (keycode == K_A)  //linux QWERTY: 97, linux AZERTY: 113
+	else if (keycode == K_LEFT)  //linux QWERTY: 97, linux AZERTY: 113
 		data->left_rotate = 0;
 	// else if (keycode == XK_Right)
 	// {
@@ -43,6 +43,7 @@ int	ft_keys_release(int	keycode, t_data	*data)
 
 int	key_press(int key, t_data *data)
 {
+	printf("---------dirX: %f,  dirY: %f ------\n", data->dirX, data->dirY);
 	if (key == K_W)
 	{
 		data->go_forwar = 1;
@@ -61,7 +62,7 @@ int	key_press(int key, t_data *data)
 			data->posY -= data->dirY * data->moveSpeed;
 	}
 	//rotate to the right
-	if (key == K_D)
+	if (key == K_RIGHT)
 	{
 		//both camera direction and camera plane must be rotated
 		data->right_rotate = 1;
@@ -73,7 +74,7 @@ int	key_press(int key, t_data *data)
 		data->planeY = oldPlaneX * sin(-data->rotSpeed) + data->planeY * cos(-data->rotSpeed);
 	}
 	//rotate to the left
-	if (key == K_A)
+	if (key == K_LEFT)
 	{
 		//both camera direction and camera plane must be rotated
 		data->left_rotate = 1;
@@ -90,6 +91,6 @@ int	key_press(int key, t_data *data)
 		exit(0);
 	}
 	mlx_clear_window(data->mlx, data->win);
-	main_loop(data);
+	start_game(data);
 	return (0);
 }

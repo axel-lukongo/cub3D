@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/21 12:11:41 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/21 20:39:51 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,20 @@ void my_rebuf(t_data *data)
 				data->buf[i][j] = 0;
 		}
 	}
-
 }
 
 
 
+/**
+ * data->raycast.hit: was there a wall data->raycast.hit?
+ * define_step(data): step is the value who allow me to increas to the other coordinate in X or Y
+ * dda_function(data): the DDA allow me to now where my ray touch the next squarre
+ * draw_start_end(data): this function allow me to know where i have to start and finish to draw my line
+ * side: it for know if i touch the side of the squar first or the face
+ * 
+ * 
+ * @param data 
+ */
 
 void	calc(t_data *data)
 {
@@ -44,7 +53,7 @@ void	calc(t_data *data)
 	while (++x < width)
 	{
 		init_raycast(data, x);
-		data->raycast.hit = 0; //was there a wall data->raycast.hit?
+		data->raycast.hit = 0;
 		define_step(data);
 		dda_function(data);
 		draw_start_end(data);

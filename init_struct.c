@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:28:57 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/20 20:39:18 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/21 20:40:04 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 //i init my variable
 void	init_struct(t_data *data)
 {
-	
-	// data->posX = 2.0;
-	// data->posY = 8.0;
 	data->dirX = -1.0;
 	data->dirY = 0.0;
 	data->planeX = 0.0;

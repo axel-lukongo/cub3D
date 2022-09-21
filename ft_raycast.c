@@ -6,11 +6,13 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:29:18 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/20 20:35:21 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:11:24 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+
 
 void define_step(t_data *data)
 {
@@ -36,24 +38,97 @@ void define_step(t_data *data)
 	}
 }
 
-void define_hit(t_data *data)
+
+
+
+
+
+void dda_function(t_data *data)
 {
+	// while we don't hit a wall.
 	while (data->raycast.hit == 0)
 	{
-		//jump to next map square, OR in x-direction, OR in y-direction
+		//jump to next map square, OR in x direction.
 		if (data->raycast.sideDistX < data->raycast.sideDistY)
 		{
 			data->raycast.sideDistX += data->raycast.deltaDistX;
 			data->raycast.mapX += data->raycast.stepX;
 			data->raycast.side = 0;
 		}
-		else
+		else//jump to next map square, OR in y direction.
 		{
 			data->raycast.sideDistY += data->raycast.deltaDistY;
 			data->raycast.mapY += data->raycast.stepY;
 			data->raycast.side = 1;
 		}
-		//Check if ray has data->raycast.hit a wall
-		if (data->map[data->raycast.mapX][data->raycast.mapY] > '0') data->raycast.hit = 1;
+		//Check if ray has hit a wall
+		if (data->map[data->raycast.mapX][data->raycast.mapY] > '0')
+			data->raycast.hit = 1;
+	}
+}
+
+
+
+
+
+void draw_start_end(t_data *data)
+{
+	if (data->raycast.side == 0)
+	{
+		data->raycast.perpWallDist = (data->raycast.mapX - data->posX +
+		(1 - data->raycast.stepX) / 2) / data->raycast.rayDirX;
+	}
+	else
+	{
+		data->raycast.perpWallDist = (data->raycast.mapY - data->posY +
+		(1 - data->raycast.stepY) / 2) / data->raycast.rayDirY;
+	}
+
+	//Calculate height of line to draw on screen
+	data->raycast.lineHeight = (int)(height / data->raycast.perpWallDist);
+
+	//calculate lowest and highest pixel to fill in current stripe
+	data->raycast.drawStart = -data->raycast.lineHeight / 2 + height / 2;
+	if(data->raycast.drawStart < 0)
+		data->raycast.drawStart = 0;
+	data->raycast.drawEnd = data->raycast.lineHeight / 2 + height / 2;
+	if(data->raycast.drawEnd >= height)
+		data->raycast.drawEnd = height - 1;
+}
+
+
+/**
+ * texNum: the line where i save my texture
+ * step: How much to increase the texture coordinate perscreen pixel
+ * texPos: Starting texture coordinate
+ * 
+ * @param data 
+ * @param x 
+ */
+
+void add_texture(t_data *data, int x, int y)
+{
+	double step;
+	double texPos;
+	int texY;
+
+	step = 1.0 * texHeight / data->raycast.lineHeight;
+	texPos = (data->raycast.drawStart - height / 2 + data->raycast.lineHeight / 2) * step;
+	if (data->raycast.side == 0 && data->raycast.rayDirX > 0)
+		data->raycast.texX = texWidth - data->raycast.texX - 1;
+	if (data->raycast.side == 1 && data->raycast.rayDirY < 0)
+		data->raycast.texX = texWidth - data->raycast.texX - 1;
+	while (y < data->raycast.drawEnd)
+	{
+		// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
+		texY = (int)texPos & (texHeight - 1);
+		texPos += step;
+		data->raycast.color = data->texture[2][texHeight * texY + data->raycast.texX];
+		// make data->raycast.color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+		if (data->raycast.side == 1)
+			data->raycast.color = (data->raycast.color >> 1) & 8355711;
+		data->buf[y][x] = data->raycast.color;
+		data->re_buf = 1;
+		y++;
 	}
 }

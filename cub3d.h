@@ -67,6 +67,11 @@ typedef struct	s_raycast
 	//Calculate height of line to draw on screen
 	int	lineHeight;
 
+	int	drawStart;
+	int	drawEnd;
+	int	texX;
+	int	color;
+	double	wallX;
 }	data_raycast;
 
 typedef struct	s_data
@@ -123,6 +128,8 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		check_texture(t_data *data);
 int		ft_keys_release(int	keycode, t_data	*data);
 void	define_step(t_data *data);
-void	define_hit(t_data *data);
+void	dda_function(t_data *data);
+void	draw_start_end(t_data *data);
+void	add_texture(t_data *data, int x, int y);
 
 #endif // !CUB3D_H

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/20 20:38:22 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:11:41 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,74 +35,32 @@ void my_rebuf(t_data *data)
 
 
 
-
-
 void	calc(t_data *data)
 {
 	int	x;
 
-	x = 0;
+	x = -1;
 	my_rebuf(data);
-	while (x < width)
+	while (++x < width)
 	{
 		init_raycast(data, x);
 		data->raycast.hit = 0; //was there a wall data->raycast.hit?
-		// int data->raycast.side; //was a NS or a EW wall data->raycast.hit?
-
 		define_step(data);
-		define_hit(data);
+		dda_function(data);
+		draw_start_end(data);
 		if (data->raycast.side == 0)
-			data->raycast.perpWallDist = (data->raycast.mapX - data->posX + (1 - data->raycast.stepX) / 2) / data->raycast.rayDirX;
-		else
-			data->raycast.perpWallDist = (data->raycast.mapY - data->posY + (1 - data->raycast.stepY) / 2) / data->raycast.rayDirY;
-
-		//Calculate height of line to draw on screen
-		data->raycast.lineHeight = (int)(height / data->raycast.perpWallDist);
-
-		//calculate lowest and highest pixel to fill in current stripe
-		int drawStart = -data->raycast.lineHeight / 2 + height / 2;
-		if(drawStart < 0)
-			drawStart = 0;
-		int drawEnd = data->raycast.lineHeight / 2 + height / 2;
-		if(drawEnd >= height)
-			drawEnd = height - 1;
-
-		// texturing calculations
-		int texNum = data->map[data->raycast.mapX][data->raycast.mapY] - 49;
-
-		// calculate value of wallX
-		double wallX;
-		if (data->raycast.side == 0)
-			wallX = data->posY + data->raycast.perpWallDist * data->raycast.rayDirY;
-		else
-			wallX = data->posX + data->raycast.perpWallDist * data->raycast.rayDirX;
-		wallX -= floor(wallX);
-
-		// x coordinate on the texture
-		int texX = (int)(wallX * (double)texWidth);
-		if (data->raycast.side == 0 && data->raycast.rayDirX > 0)
-			texX = texWidth - texX - 1;
-		if (data->raycast.side == 1 && data->raycast.rayDirY < 0)
-			texX = texWidth - texX - 1;
-
-		// How much to increase the texture coordinate perscreen pixel
-		double step = 1.0 * texHeight / data->raycast.lineHeight;
-		// Starting texture coordinate
-		double texPos = (drawStart - height / 2 + data->raycast.lineHeight / 2) * step;
-		for (int y = drawStart; y < drawEnd; y++)
 		{
-			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
-			int texY = (int)texPos & (texHeight - 1);
-			texPos += step;
-			// printf("------------texnum : %d\n", texNum);
-			u_int32_t color = data->texture[texNum][texHeight * texY + texX];
-			// make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
-			if (data->raycast.side == 1)
-				color = (color >> 1) & 8355711;
-			data->buf[y][x] = color;
-			data->re_buf = 1;
+			data->raycast.wallX = data->posY + 
+			data->raycast.perpWallDist * data->raycast.rayDirY;
 		}
-		x++;
+		else
+		{
+			data->raycast.wallX = data->posX +
+			data->raycast.perpWallDist * data->raycast.rayDirX;
+		}
+		data->raycast.wallX -= floor(data->raycast.wallX);
+		data->raycast.texX = (int)(data->raycast.wallX * (double)texWidth);
+		add_texture(data, x, data->raycast.drawStart);
 	}
 }
 

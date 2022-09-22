@@ -1,7 +1,7 @@
-SO ./path_to_the_south_texture
-NO ./path_to_the_north_texture
-EA ./path_to_the_east_texture
-WE ./path_to_the_west_texture
+SO ./textures/purplestone.xpm
+NO ./textures/purplestone.xpm
+EA ./textures/purplestone.xpm
+WE ./textures/purplestone.xpm
 F 204,204,255
 C 254,254,226
 

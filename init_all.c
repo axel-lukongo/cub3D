@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 01:40:22 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/22 18:11:36 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/22 20:38:02 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	allocate_map(t_data *data, char *file, int fd)
  * 
  * @param file 
  */
-
 void	check_name_map(char *file)
 {
 	int	i;

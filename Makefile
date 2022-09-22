@@ -14,11 +14,11 @@ SRCS =	main.c\
 		my_free.c\
 		ft_raycast.c\
 		game_event.c\
+		release_key.c\
 		gnl/get_next_line.c\
 		gnl/get_next_line_utils.c\
 		functions/ft_strlen2.c\
 		functions/ft_strncmp.c\
-
 
 
 BONUS_SRCS = ${BONUS_SRC}

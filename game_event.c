@@ -6,30 +6,11 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:08:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/22 17:59:09 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/22 20:45:23 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"cub3d.h"
-
-int	ft_keys_release(int	keycode, t_data	*data)
-{
-	if (keycode == K_W)
-		data->go_forwar = 0;
-	else if (keycode == K_S)
-		data->go_back = 0;
-	if (keycode == K_RIGHT)
-		data->right_rotate = 0;
-	else if (keycode == K_LEFT)
-		data->left_rotate = 0;
-	if (keycode == K_A)
-		data->go_left = 0;
-	else if (keycode == K_D)
-		data->go_right = 0;
-	return (0);
-}
-
-
 
 void move_back_forward(t_data *data)
 {
@@ -53,52 +34,53 @@ void move_back_forward(t_data *data)
 	}
 }
 
-
-
-
-
 void move_left_right(t_data *data)
 {
 	if (data->go_left == 1)
 	{
-		if (data->map[(int)(data->posX - data->dirY * data->moveSpeed)][(int)(data->posY)] == '0')
+		if (data->map[(int)(data->posX -
+		data->dirY * data->moveSpeed)][(int)(data->posY)] == '0')
 			data->posX -= data->dirY * data->moveSpeed;
-		if (data->map[(int)(data->posX)][(int)(data->posY + (data->dirX * data->moveSpeed * 2))] == '0')
+		if (data->map[(int)(data->posX)][(int)(data->posY +
+		(data->dirX * data->moveSpeed * 2))] == '0')
 			data->posY += data->dirX * data->moveSpeed;
 	}
 	else if (data->go_right == 1)
 	{
-		if (data->map[(int)(data->posX + (data->dirY * data->moveSpeed * 2))][(int)(data->posY)] == '0')
+		if (data->map[(int)(data->posX + (data->dirY *
+		data->moveSpeed * 2))][(int)(data->posY)] == '0')
 			data->posX += data->dirY * (data->moveSpeed);
-		if(data->map[(int)(data->posX)][(int)(data->posY - (data->dirX * data->moveSpeed * 2))] == '0')
+		if(data->map[(int)(data->posX)][(int)(data->posY -
+		(data->dirX * data->moveSpeed * 2))] == '0')
 			data->posY -= data->dirX * (data->moveSpeed);
 	}
 }
 
-
-
-
-
-
 void rotation(t_data *data)
 {
+	double oldDirX = data->dirX;
+	double oldPlaneX = data->planeX;
 	if (data->right_rotate == 1)
 	{
-		double oldDirX = data->dirX;
-		data->dirX = data->dirX * cos(-data->rotSpeed) - data->dirY * sin(-data->rotSpeed);
-		data->dirY = oldDirX * sin(-data->rotSpeed) + data->dirY * cos(-data->rotSpeed);
-		double oldPlaneX = data->planeX;
-		data->planeX = data->planeX * cos(-data->rotSpeed) - data->planeY * sin(-data->rotSpeed);
-		data->planeY = oldPlaneX * sin(-data->rotSpeed) + data->planeY * cos(-data->rotSpeed);
+		data->dirX = data->dirX * cos(-data->rotSpeed) -
+		data->dirY * sin(-data->rotSpeed);
+		data->dirY = oldDirX * sin(-data->rotSpeed) +
+		data->dirY * cos(-data->rotSpeed);
+		data->planeX = data->planeX * cos(-data->rotSpeed) -
+		data->planeY * sin(-data->rotSpeed);
+		data->planeY = oldPlaneX * sin(-data->rotSpeed) +
+		data->planeY * cos(-data->rotSpeed);
 	}
 	else if (data->left_rotate == 1)
 	{
-		double oldDirX = data->dirX;
-		data->dirX = data->dirX * cos(data->rotSpeed) - data->dirY * sin(data->rotSpeed);
-		data->dirY = oldDirX * sin(data->rotSpeed) + data->dirY * cos(data->rotSpeed);
-		double oldPlaneX = data->planeX;
-		data->planeX = data->planeX * cos(data->rotSpeed) - data->planeY * sin(data->rotSpeed);
-		data->planeY = oldPlaneX * sin(data->rotSpeed) + data->planeY * cos(data->rotSpeed);
+		data->dirX = data->dirX * cos(data->rotSpeed) -
+		data->dirY * sin(data->rotSpeed);
+		data->dirY = oldDirX * sin(data->rotSpeed) +
+		data->dirY * cos(data->rotSpeed);
+		data->planeX = data->planeX * cos(data->rotSpeed) -
+		data->planeY * sin(data->rotSpeed);
+		data->planeY = oldPlaneX * sin(data->rotSpeed) +
+		data->planeY * cos(data->rotSpeed);
 	}
 }
 
@@ -132,8 +114,6 @@ void my_direction(t_data *data, int key)
 
 int	key_press(int key, t_data *data)
 {
-	// printf("-------posX: %f, posY: %f----------\n",data->posX, data->posY);
-	// printf("-------dirX: %f, dirY: %f----------\n",data->dirX, data->dirY);
 	my_direction(data, key);
 	if (key == K_ESC)
 	{

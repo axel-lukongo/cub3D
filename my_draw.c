@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:59:09 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/20 20:17:04 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/22 21:17:00 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,21 @@ void	load_image(t_data *data, int *texture, char *path, t_img *img)
 	mlx_destroy_image(data->mlx, img->img);
 }
 
-
-
 void	load_texture(t_data *data)
 {
 	t_img	img;
+	
 
 	load_image(data, data->texture[0], "textures/eagle.xpm", &img);
 	load_image(data, data->texture[1], "textures/redbrick.xpm", &img);
-	load_image(data, data->texture[2], "textures/purplestone.xpm", &img);
+	// printf("-------%s---------\n", data->EA);
+	load_image(data, data->texture[2], "textures/greystone.xpm", &img);
 	load_image(data, data->texture[3], "textures/greystone.xpm", &img);
 	load_image(data, data->texture[4], "textures/bluestone.xpm", &img);
 	load_image(data, data->texture[5], "textures/mossy.xpm", &img);
 	load_image(data, data->texture[6], "textures/wood.xpm", &img);
 	load_image(data, data->texture[7], "textures/colorstone.xpm", &img);
 }
-
-
-
 
 //this function allow me to draw a line
 void	draw(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:58:14 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/16 19:49:38 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/22 21:15:26 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	init_texture_and_color(t_data *data, int nb_data)
 		else if (!ft_strncmp(data->file[i], "WE ./", 5))
 			data->WE = data->file[i];
 		else if (!ft_strncmp(data->file[i], "EA ./", 5))
-			data->EA = data->file[i];
+			data->EA = data->file[i] + 5;
 		else if (!ft_strncmp(data->file[i], "F ", 2))
 			data->color_floor = data->file[i];
 		else if (!ft_strncmp(data->file[i], "C ", 2))

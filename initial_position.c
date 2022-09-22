@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:02:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/22 20:35:36 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/22 20:36:56 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	direction_plane(t_data *data, char player_orientation)
 		data->dirX = 0.0;
 		data->planeY = 0.0;
 	}
-	
 }
 
 void	start_orientation(t_data *data, char player_orientation)

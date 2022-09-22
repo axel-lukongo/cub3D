@@ -133,6 +133,6 @@ void	define_step(t_data *data);
 void	dda_function(t_data *data);
 void	draw_start_end(t_data *data);
 void	add_texture(t_data *data, int x, int y);
-int		start_position(t_data *data, char value);
+int		set_position(t_data *data, char value);
 
 #endif // !CUB3D_H

@@ -37,20 +37,8 @@ int check_doublons(t_data *data)
 			if (data->file[i][j] == 'N' || data->file[i][j] == 'S'
 			|| data->file[i][j] == 'E' || data->file[i][j] == 'W')
 			{
-				// printf("-----------i: %d, j: %d----------\n",i, j);
-				data->posX = j;
-				data->posY = i;
-				// if(data->file[i][j] == 'N' || data->file[i][j] == 'S')
-				// {
-				// 	data->dirX = 0.012389;
-				// 	data->dirY = 0.99;
-				// }
-				// else
-				// {
-				// 	data->dirX = -1.0;
-				// 	data->dirY = 0.0;
-				// }
-				data->file[i][j] = '0';
+				// start_orientation(data, i, j);
+				// data->file[i][j] = '0';
 				count++;
 			}
 		}
@@ -167,5 +155,6 @@ int	check_content_map(char **map, t_data *data)
 				return (ERROR);
 		}
 	}
+	// printf("-------------size_map: %d-------------\n", i - data->begin_map);
 	return (GOOD);
 }

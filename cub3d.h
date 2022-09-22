@@ -105,6 +105,8 @@ typedef struct	s_data
 	int		right_rotate;
 	int		go_forwar;
 	int		go_back;
+	int		go_left;
+	int		go_right;
 	data_raycast	raycast;
 	t_img	img;
 }				t_data;
@@ -131,5 +133,6 @@ void	define_step(t_data *data);
 void	dda_function(t_data *data);
 void	draw_start_end(t_data *data);
 void	add_texture(t_data *data, int x, int y);
+int		start_position(t_data *data, char value);
 
 #endif // !CUB3D_H

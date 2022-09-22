@@ -9,6 +9,7 @@ SRCS =	main.c\
 		init_all.c\
 		parsing_map.c\
 		parsing_texture.c\
+		initial_position.c\
 		my_draw.c\
 		my_free.c\
 		ft_raycast.c\

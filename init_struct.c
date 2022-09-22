@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:28:57 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/21 20:40:04 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/22 20:02:57 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,72 @@
 
 
 //i init my variable
+
+// void start_orientation(t_data *data, int i, int j)
+// {
+// 	if (data->map[i][j] == 'N')
+// 	{
+// 		data->planeY = 0.66;
+// 		data->dirX = -1;
+// 		data->dirY = 0.0;
+// 		data->planeX = 0.0;
+// 	}
+// 	else if (data->map[i][j] == 'S')
+// 	{
+// 		data->planeY = -0.66;
+// 		data->dirX = 1;
+// 		data->dirY = 0.0;
+// 		data->planeX = 0.0;
+// 	}
+// 	else if (data->map[i][j] == 'E')
+// 	{
+// 		data->planeX = 0.66;
+// 		data->dirY = 1;
+// 		data->dirX = 0.0;
+// 		data->planeY = 0.0;
+// 	}
+// 	else if (data->map[i][j] == 'W')
+// 	{
+// 		data->planeX = -0.66;
+// 		data->dirY = -1;
+// 		data->dirX = 0.0;
+// 		data->planeY = 0.0;
+// 	}
+// }
+
+
+// int start_position(t_data *data, char value)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = -1;
+// 	while (++i < data->row - (data->begin_map))
+// 	{
+// 		j = -1;
+// 		while(++j < ft_strlen2(data->map[i]))
+// 		{
+// 			if (data->map[i][j] == 'N' || data->map[i][j] == 'S' || 
+// 				data->map[i][j] == 'E' || data->map[i][j] == 'W')
+// 			{
+// 				if (value == 'X')
+// 					return (i);
+// 				else
+// 				{
+// 					start_orientation(data, i, j);
+// 					data->map[i][j] = '0';
+// 					return(j);
+// 				}
+// 			}
+// 		}
+// 	}
+// 	return (1);
+// }
+
 void	init_struct(t_data *data)
 {
-	data->dirX = -1.0;
-	data->dirY = 0.0;
-	data->planeX = 0.0;
-	data->planeY = 0.66;
+	data->posX = start_position(data, 'X');
+	data->posY = start_position(data, 'Y');
 	data->re_buf = 0;
 	data->moveSpeed = 0.05;
 	data->rotSpeed = 0.05;
@@ -28,6 +88,8 @@ void	init_struct(t_data *data)
 	data->right_rotate = 0;
 	data->go_forwar = 0;
 	data->go_back = 0;
+	data->go_left = 0;
+	data->go_right = 0;
 }
 
 
@@ -65,6 +127,7 @@ void init_raycast(t_data *data, int x)
 	data->raycast.cameraX = 2 * x / (double)width - 1;
 		data->raycast.rayDirX = data->dirX + data->planeX * data->raycast.cameraX;
 		data->raycast.rayDirY = data->dirY + data->planeY * data->raycast.cameraX;
+		// printf("-----------data->posX: %f, data->posY: %f-----------\n",data->posX, data->posY);
 		data->raycast.mapX = (int)data->posX;
 		data->raycast.mapY = (int)data->posY;
 		data->raycast.deltaDistX = fabs(1 / data->raycast.rayDirX);

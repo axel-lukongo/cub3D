@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:28:57 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/22 20:37:53 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:48:38 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,12 @@ int	init_buf(t_data *data)
 	{
 		j = -1;
 		while (j++ < width)
-			data->buf[i][j] = 0;
+		{
+			// if (i < height / 3)
+			// 	data->buf[height - i - 1][j] = 0xFF0000;
+			// else
+				data->buf[i][j] = 0;
+		}
 	}
 	data->texture = (int **)malloc(sizeof(int *) * texHeight);
 	if (!data->texture)

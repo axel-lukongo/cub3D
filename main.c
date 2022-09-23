@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/22 21:10:54 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:31:38 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int	start_game(t_data *data)
 }
 
 
+	// verLine(&data, 0xFF0000, 0x0000FF);
 
 
 

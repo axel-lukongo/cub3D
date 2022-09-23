@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:19:01 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/20 12:54:33 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/23 12:57:54 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,23 @@ void	free_map(t_data *data)
 	free(data->map);
 	free(data->file);
 	free(data->texture);
+	free(data->SO);
+	free(data->EA);
+	free(data->NO);
+	free(data->WE);
+	free(data->color_ceiling);
+	free(data->color_floor);
+}
+
+void	my_free_alloc(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }

@@ -127,8 +127,11 @@ int		init_file(t_data *data, char *file);
 int		ft_strlen(char *s);
 int		ft_strlen2(char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		my_cpy(char *dest, char *src, char *to_skip);
+char	*my_cpy(char *dest, char *src, char *to_skip);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
+char	**ft_split(char const *s, char c);
+void	my_free_alloc(char **tab);
+int		ft_atoi(const char *str);
 int		check_texture(t_data *data);
 int		ft_keys_release(int	keycode, t_data	*data);
 void	define_step(t_data *data);
@@ -136,5 +139,7 @@ void	dda_function(t_data *data);
 void	draw_start_end(t_data *data);
 void	add_texture(t_data *data, int x, int y);
 int		set_position(t_data *data, char value);
+int		ft_convert_color(char *str);
+void	verLine(t_data *data, int color_ceil, int color_floor);
 
 #endif // !CUB3D_H

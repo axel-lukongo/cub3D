@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:59:09 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/22 21:17:00 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:01:10 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,36 @@ void	load_texture(t_data *data)
 
 	load_image(data, data->texture[0], "textures/eagle.xpm", &img);
 	load_image(data, data->texture[1], "textures/redbrick.xpm", &img);
-	// printf("-------%s---------\n", data->EA);
-	load_image(data, data->texture[2], "textures/greystone.xpm", &img);
+	load_image(data, data->texture[2], data->SO, &img);
+	//load_image(data, data->texture[2], "textures/purplestone.xpm", &img);
 	load_image(data, data->texture[3], "textures/greystone.xpm", &img);
 	load_image(data, data->texture[4], "textures/bluestone.xpm", &img);
 	load_image(data, data->texture[5], "textures/mossy.xpm", &img);
 	load_image(data, data->texture[6], "textures/wood.xpm", &img);
 	load_image(data, data->texture[7], "textures/colorstone.xpm", &img);
+}
+
+void	verLine(t_data *data, int color_ceil, int color_floor)
+{
+	int	y;
+	int	x;
+
+	x = 0;
+	while (x < width)
+	{
+		y = 0;
+		while (y <= height / 2)
+		{
+			mlx_pixel_put(data->mlx, data->win, x, y, color_ceil);
+			y++;
+		}
+		while (y <= height)
+		{
+			mlx_pixel_put(data->mlx, data->win, x, y, color_floor);
+			y++;
+		}
+		x++;
+	}
 }
 
 //this function allow me to draw a line
@@ -61,8 +84,8 @@ void	draw(t_data *data)
 		x = 0;
 		while (x < width)
 		{
-			
-			data->img.data[y * width + x] = data->buf[y][x];
+		
+				data->img.data[y * width + x] = data->buf[y][x];
 			x++;
 		}
 		y++;

@@ -15,12 +15,15 @@ SRCS =	main.c\
 		ft_raycast.c\
 		game_event.c\
 		release_key.c\
+		utils.c\
 		gnl/get_next_line.c\
 		gnl/get_next_line_utils.c\
 		functions/ft_strlen2.c\
 		functions/ft_strncmp.c\
 		functions/my_cpy.c\
 		functions/ft_strncpy.c\
+		functions/ft_split.c\
+		functions/ft_atoi.c\
 
 
 BONUS_SRCS = ${BONUS_SRC}

@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_cpy.c                                           :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/22 21:33:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/23 13:03:15 by alukongo         ###   ########.fr       */
+/*   Created: 2021/07/07 10:06:12 by alukongo          #+#    #+#             */
+/*   Updated: 2022/09/23 12:45:45 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../cub3d.h"
 
-char	*my_cpy(char *dest, char *src, char *to_skip)
+//good
+int	ft_atoi(const char *str)
 {
-	int	i;
-	
+	long	i;
+	int		signe;
+	int		nbr;
+
+	nbr = 0;
+	signe = 1;
 	i = 0;
-	dest = malloc(sizeof(char) * ft_strlen(src) + 1);
-	if(!dest)
-		return(NULL);
-	while(src[i] == ' ')
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	if (ft_strncmp(&src[i], to_skip, ft_strlen(to_skip)))
-			return (NULL);
-	i += 5;
-	dest = ft_strncpy(dest, src + ft_strlen(to_skip), ft_strlen2(src));
-	return(dest);
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '+')
+			signe = signe * 1;
+		if (str[i] == '-')
+			signe = signe * (-1);
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nbr = nbr * 10 + str[i] - 48;
+		i++;
+	}
+	nbr = nbr * signe;
+	return (nbr);
 }

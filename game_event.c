@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:08:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/22 20:45:23 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/23 17:23:25 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void move_left_right(t_data *data)
 			data->posX += data->dirY * (data->moveSpeed);
 		if(data->map[(int)(data->posX)][(int)(data->posY -
 		(data->dirX * data->moveSpeed * 2))] == '0')
-			data->posY -= data->dirX * (data->moveSpeed);
+			data->posY -= data->dirX * data->moveSpeed;
 	}
 }
 

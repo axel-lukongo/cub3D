@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/23 13:31:38 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/23 20:13:35 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,8 @@ void my_rebuf(t_data *data)
  * @param data 
  */
 
-void	calc(t_data *data)
+void	calc(t_data *data, int x)
 {
-	int	x;
-
-	x = -1;
 	my_rebuf(data);
 	while (++x < width)
 	{
@@ -70,6 +67,8 @@ void	calc(t_data *data)
 		data->raycast.wallX -= floor(data->raycast.wallX);
 		data->raycast.texX = (int)(data->raycast.wallX * (double)texWidth);
 		add_texture(data, x, data->raycast.drawStart);
+		verLine(data, ft_convert_color(data->color_floor), ft_convert_color(data->color_ceiling), x);
+		draw(data, x);
 	}
 }
 
@@ -88,8 +87,8 @@ void	calc(t_data *data)
  */
 int	start_game(t_data *data)
 {
-	calc(data);
-	draw(data);
+	calc(data, -1);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	return (0);
 }
 
@@ -132,6 +131,8 @@ int	main(int ac, char **av)
 	data.win = mlx_new_window(data.mlx, width, height, "mlx");//i init my window
 	data.img.img = mlx_new_image(data.mlx, width, height); //i init my image
 	data.img.data = (int *)mlx_get_data_addr(data.img.img, &data.img.bpp, &data.img.size_l, &data.img.endian);
+	// verLine(&data, 0x0000FF,0xFF0000);
+	
 	mlx_loop_hook(data.mlx, &start_game, &data);//this is where every thing start
 	mlx_hook(data.win, 2, 1L << 0, key_press, &data); 
 	mlx_hook(data.win, 3, 1L << 1, ft_keys_release, &data);

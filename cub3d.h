@@ -115,7 +115,7 @@ int		key_press(int key, t_data *data);
 int		start_game(t_data *data);
 void	load_image(t_data *data, int *texture, char *path, t_img *img);
 void	load_texture(t_data *data);
-void	draw(t_data *data);
+void	draw(t_data *data, int x);
 void	init_struct(t_data *data);
 void	init_raycast(t_data *data, int x);
 int		init_buf(t_data *data);
@@ -140,6 +140,6 @@ void	draw_start_end(t_data *data);
 void	add_texture(t_data *data, int x, int y);
 int		set_position(t_data *data, char value);
 int		ft_convert_color(char *str);
-void	verLine(t_data *data, int color_ceil, int color_floor);
+void	verLine(t_data *data, int color_ceil, int color_floor, int x);
 
 #endif // !CUB3D_H

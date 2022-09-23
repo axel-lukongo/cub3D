@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:58:14 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/23 20:12:28 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/23 20:33:04 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	init_texture_and_color(t_data *data, int nb_data)
 	}
 	if (nb_data < 6)
 		return (ERROR);
-	printf("----------%s----------", data->color_floor);
 	return (i);
 }
 

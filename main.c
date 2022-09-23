@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/23 20:13:35 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/23 20:32:54 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,11 +127,9 @@ int	main(int ac, char **av)
 	if (init_buf(&data) == ERROR)
 		return(ERROR);
 	load_texture(&data);
-	// printf("-----------path_text: %s----------\n", data.EA+5);
 	data.win = mlx_new_window(data.mlx, width, height, "mlx");//i init my window
 	data.img.img = mlx_new_image(data.mlx, width, height); //i init my image
 	data.img.data = (int *)mlx_get_data_addr(data.img.img, &data.img.bpp, &data.img.size_l, &data.img.endian);
-	// verLine(&data, 0x0000FF,0xFF0000);
 	
 	mlx_loop_hook(data.mlx, &start_game, &data);//this is where every thing start
 	mlx_hook(data.win, 2, 1L << 0, key_press, &data); 

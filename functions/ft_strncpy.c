@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_cpy.c                                           :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/22 21:33:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/23 11:41:46 by alukongo         ###   ########.fr       */
+/*   Created: 2022/09/23 11:32:32 by alukongo          #+#    #+#             */
+/*   Updated: 2022/09/23 11:32:59 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../cub3d.h"
 
-int	my_cpy(char *dest, char *src, char *to_skip)
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int	i;
-	
+	unsigned int	i;
+
 	i = 0;
-	dest = malloc(sizeof(char) * ft_strlen(src) + 1);
-	if(!dest)
-		return(ERROR);
-	while(src[i] == ' ')
+	while (src[i] != '\0' && i < n)
+	{
+		dest[i] = src[i];
 		i++;
-	if (ft_strncmp(src + i, to_skip, 5))
-			return (ERROR);
-	i += 5;
-	dest = ft_strncpy(dest, src, ft_strlen2(src));
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }

@@ -127,6 +127,8 @@ int		init_file(t_data *data, char *file);
 int		ft_strlen(char *s);
 int		ft_strlen2(char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		my_cpy(char *dest, char *src, char *to_skip);
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
 int		check_texture(t_data *data);
 int		ft_keys_release(int	keycode, t_data	*data);
 void	define_step(t_data *data);

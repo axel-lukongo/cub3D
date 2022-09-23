@@ -19,6 +19,8 @@ SRCS =	main.c\
 		gnl/get_next_line_utils.c\
 		functions/ft_strlen2.c\
 		functions/ft_strncmp.c\
+		functions/my_cpy.c\
+		functions/ft_strncpy.c\
 
 
 BONUS_SRCS = ${BONUS_SRC}

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:08:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 15:52:14 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:01:08 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	key_press(int key, t_data *data)
 	my_direction(data, key);
 	if (key == K_ESC)
 	{
-		close_my_game(data);
+		close_my_game(data, 1);
 		exit(0);
 	}
 	mlx_clear_window(data->mlx, data->win);

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 15:53:39 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:10:09 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,21 +109,23 @@ int	start_game(t_data *data)
 int	main(int ac, char **av)
 {
 	t_data data;
-	data.mlx = mlx_init();
 
+	data.mlx = mlx_init();
+	data.win = mlx_new_window(data.mlx, width, height, "mlx");//i init my window
+	data.img.img = mlx_new_image(data.mlx, width, height); //i init my image
+	data.img.data = (int *)mlx_get_data_addr(data.img.img, &data.img.bpp, &data.img.size_l, &data.img.endian);
 	if ((init_file(&data, av[1]) == ERROR) || ac != 2 || !data.mlx)
 	{
 		printf("\033[1;31mERROR\n\033[0m");
-		free_map(&data);
+		// free_file(&data);
+		close_my_game(&data, 0);
+		// free_texture(&data);
 		return(0);
 	}
 	init_struct(&data);
 	if (init_buf(&data) == ERROR)
 		return(ERROR);
 	load_texture(&data);
-	data.win = mlx_new_window(data.mlx, width, height, "mlx");//i init my window
-	data.img.img = mlx_new_image(data.mlx, width, height); //i init my image
-	data.img.data = (int *)mlx_get_data_addr(data.img.img, &data.img.bpp, &data.img.size_l, &data.img.endian);
 	
 	mlx_loop_hook(data.mlx, &start_game, &data);//this is where every thing start
 	mlx_hook(data.win, 2, 1L << 0, key_press, &data); 

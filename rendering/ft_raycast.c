@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:29:18 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 15:53:22 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 21:05:09 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ void	define_step(t_data *data)
 	if (data->raycast.rayDirX < 0)
 	{
 		data->raycast.stepX = -1;
-		data->raycast.sideDistX = (data->posX - data->raycast.mapX) * data->raycast.deltaDistX;
+		data->raycast.sideDistX = (data->pos_x - data->raycast.mapX) * data->raycast.deltaDistX;
 	}
 	else
 	{
 		data->raycast.stepX = 1;
-		data->raycast.sideDistX = (data->raycast.mapX + 1.0 - data->posX) * data->raycast.deltaDistX;
+		data->raycast.sideDistX = (data->raycast.mapX + 1.0 - data->pos_x) * data->raycast.deltaDistX;
 	}
 	if (data->raycast.rayDirY < 0)
 	{
 		data->raycast.stepY = -1;
-		data->raycast.sideDistY = (data->posY - data->raycast.mapY) * data->raycast.deltaDistY;
+		data->raycast.sideDistY = (data->pos_y - data->raycast.mapY) * data->raycast.deltaDistY;
 	}
 	else
 	{
 		data->raycast.stepY = 1;
-		data->raycast.sideDistY = (data->raycast.mapY + 1.0 - data->posY) * data->raycast.deltaDistY;
+		data->raycast.sideDistY = (data->raycast.mapY + 1.0 - data->pos_y) * data->raycast.deltaDistY;
 	}
 }
 
@@ -75,12 +75,12 @@ void	draw_start_end(t_data *data)
 {
 	if (data->raycast.side == 0)
 	{
-		data->raycast.perpWallDist = (data->raycast.mapX - data->posX +
+		data->raycast.perpWallDist = (data->raycast.mapX - data->pos_x +
 		(1 - data->raycast.stepX) / 2) / data->raycast.rayDirX;
 	}
 	else
 	{
-		data->raycast.perpWallDist = (data->raycast.mapY - data->posY +
+		data->raycast.perpWallDist = (data->raycast.mapY - data->pos_y +
 		(1 - data->raycast.stepY) / 2) / data->raycast.rayDirY;
 	}
 
@@ -108,22 +108,22 @@ void	draw_start_end(t_data *data)
 
 void	add_texture(t_data *data, int x, int y)
 {
-	double step;
-	double texPos;
-	int texY;
+	double	step;
+	double	texPos;
+	int		texY;
 
-	step = 1.0 * texHeight / data->raycast.lineHeight;
+	step = 1.0 * TEXHEIGHT / data->raycast.lineHeight;
 	texPos = (data->raycast.drawStart - height / 2 + data->raycast.lineHeight / 2) * step;
 	if (data->raycast.side == 0 && data->raycast.rayDirX > 0)
-		data->raycast.texX = texWidth - data->raycast.texX - 1;
+		data->raycast.texX = TEXWIDTH - data->raycast.texX - 1;
 	if (data->raycast.side == 1 && data->raycast.rayDirY < 0)
-		data->raycast.texX = texWidth - data->raycast.texX - 1;
+		data->raycast.texX = TEXWIDTH - data->raycast.texX - 1;
 	while (y < data->raycast.drawEnd)
 	{
-		// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
-		texY = (int)texPos & (texHeight - 1);
+		// Cast the texture coordinate to integer, and mask with (TEXHEIGHT - 1) in case of overflow
+		texY = (int)texPos & (TEXHEIGHT - 1);
 		texPos += step;
-		data->raycast.color = data->texture[2][texHeight * texY + data->raycast.texX];
+		data->raycast.color = data->texture[2][TEXHEIGHT * texY + data->raycast.texX];
 		// make data->raycast.color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
 		if (data->raycast.side == 1)
 			data->raycast.color = (data->raycast.color >> 1) & 8355711;

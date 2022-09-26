@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:28:57 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 15:52:33 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 21:01:46 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	init_struct(t_data *data)
 {
-	data->posX = set_position(data, 'X');
-	data->posY = set_position(data, 'Y');
+	data->pos_x = set_position(data, 'X');
+	data->pos_y = set_position(data, 'Y');
 	data->re_buf = 0;
-	data->moveSpeed = 0.05;
-	data->rotSpeed = 0.05;
+	data->movespeed = 0.05;
+	data->rotspeed = 0.05;
 	data->left_rotate = 0;
 	data->right_rotate = 0;
 	data->go_forwar = 0;
@@ -30,13 +30,13 @@ void	init_struct(t_data *data)
 //i init my texture
 int	init_texture(t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (++i < 8)
 	{
-		data->texture[i] = (int *)malloc(sizeof(int) * (texHeight * texWidth));
+		data->texture[i] = (int *)malloc(sizeof(int) * (TEXHEIGHT * TEXWIDTH));
 		if (!data->texture[i])
 			return (ERROR);
 	}
@@ -44,19 +44,19 @@ int	init_texture(t_data *data)
 	while (++i < 8)
 	{
 		j = -1;
-		while (++j < texHeight * texWidth)
+		while (++j < TEXHEIGHT * TEXWIDTH)
 			data->buf[i][j] = 0;
 	}
-	return(GOOD);
+	return (GOOD);
 }
 
 void	init_raycast(t_data *data, int x)
 {
 	data->raycast.cameraX = 2 * x / (double)width - 1;
-		data->raycast.rayDirX = data->dirX + data->planeX * data->raycast.cameraX;
-		data->raycast.rayDirY = data->dirY + data->planeY * data->raycast.cameraX;
-		data->raycast.mapX = (int)data->posX;
-		data->raycast.mapY = (int)data->posY;
+		data->raycast.rayDirX = data->dir_x + data->plane_x * data->raycast.cameraX;
+		data->raycast.rayDirY = data->dir_y + data->plane_y * data->raycast.cameraX;
+		data->raycast.mapX = (int)data->pos_x;
+		data->raycast.mapY = (int)data->pos_y;
 		data->raycast.deltaDistX = fabs(1 / data->raycast.rayDirX);
 		data->raycast.deltaDistY = fabs(1 / data->raycast.rayDirY);
 }
@@ -76,7 +76,7 @@ int	init_buf(t_data *data)
 			data->buf[i][j] = 0;
 		}
 	}
-	data->texture = (int **)malloc(sizeof(int *) * texHeight);
+	data->texture = (int **)malloc(sizeof(int *) *TEXHEIGHT);
 	if (!data->texture)
 		return (ERROR);
 	if(init_texture(data) == ERROR)

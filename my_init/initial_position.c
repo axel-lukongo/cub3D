@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:02:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 15:38:33 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:57:15 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	direction_plane(t_data *data, char player_orientation)
 {
 	if (player_orientation == 'N' || player_orientation == 'S')
 	{
-		data->dirY = 0.0;
-		data->planeX = 0.0;
+		data->dir_y = 0.0;
+		data->plane_x = 0.0;
 	}
 	else if (player_orientation == 'E' || player_orientation == 'W')
 	{
-		data->dirX = 0.0;
-		data->planeY = 0.0;
+		data->dir_x = 0.0;
+		data->plane_y = 0.0;
 	}
 }
 
@@ -30,23 +30,23 @@ void	start_orientation(t_data *data, char player_orientation)
 {
 	if (player_orientation == 'N')
 	{
-		data->planeY = 0.66;
-		data->dirX = -1;
+		data->plane_y = 0.66;
+		data->dir_x = -1;
 	}
 	else if (player_orientation == 'S')
 	{
-		data->planeY = -0.66;
-		data->dirX = 1;
+		data->plane_y = -0.66;
+		data->dir_x = 1;
 	}
 	else if (player_orientation == 'E')
 	{
-		data->planeX = 0.66;
-		data->dirY = 1;
+		data->plane_x = 0.66;
+		data->dir_y = 1;
 	}
 	else if (player_orientation == 'W')
 	{
-		data->planeX = -0.66;
-		data->dirY = -1;
+		data->plane_x = -0.66;
+		data->dir_y = -1;
 	}
 	direction_plane(data, player_orientation);
 }

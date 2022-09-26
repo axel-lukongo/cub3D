@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:59:09 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 20:02:34 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:48:10 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	load_texture(t_data *data)
 
 	load_image(data, data->texture[0], "textures/eagle.xpm", &img);
 	load_image(data, data->texture[1], "textures/redbrick.xpm", &img);
-	load_image(data, data->texture[2], data->SO, &img);
+	load_image(data, data->texture[2], data->so, &img);
 	load_image(data, data->texture[3], "textures/greystone.xpm", &img);
 	load_image(data, data->texture[4], "textures/bluestone.xpm", &img);
 	load_image(data, data->texture[5], "textures/mossy.xpm", &img);

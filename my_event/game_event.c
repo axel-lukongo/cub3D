@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:08:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 19:02:46 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:57:15 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ void	move_back_forward(t_data *data)
 {
 	if (data->go_forwar == 1)
 	{
-		if (data->map[(int)(data->posX +
-		data->dirX * data->moveSpeed)][(int)(data->posY)] == '0')
-			data->posX += data->dirX * data->moveSpeed;
-		if (data->map[(int)(data->posX)][(int)(data->posY +
-		data->dirY * data->moveSpeed)] == '0')
-			data->posY += data->dirY * data->moveSpeed;
+		if (data->map[(int)(data->pos_x +
+		data->dir_x * data->movespeed)][(int)(data->pos_y)] == '0')
+			data->pos_x += data->dir_x * data->movespeed;
+		if (data->map[(int)(data->pos_x)][(int)(data->pos_y +
+		data->dir_y * data->movespeed)] == '0')
+			data->pos_y += data->dir_y * data->movespeed;
 	}
 	else if (data->go_back == 1)
 	{
-		if (data->map[(int)(data->posX -
-		data->dirX * data->moveSpeed)][(int)(data->posY)] == '0')
-			data->posX -= data->dirX * data->moveSpeed;
-		if (data->map[(int)(data->posX)][(int)(data->posY -
-		data->dirY * data->moveSpeed)] == '0')
-			data->posY -= data->dirY * data->moveSpeed;
+		if (data->map[(int)(data->pos_x -
+		data->dir_x * data->movespeed)][(int)(data->pos_y)] == '0')
+			data->pos_x -= data->dir_x * data->movespeed;
+		if (data->map[(int)(data->pos_x)][(int)(data->pos_y -
+		data->dir_y * data->movespeed)] == '0')
+			data->pos_y -= data->dir_y * data->movespeed;
 	}
 }
 
@@ -38,50 +38,50 @@ void	move_left_right(t_data *data)
 {
 	if (data->go_left == 1)
 	{
-		if (data->map[(int)(data->posX -
-		data->dirY * data->moveSpeed)][(int)(data->posY)] == '0')
-			data->posX -= data->dirY * data->moveSpeed;
-		if (data->map[(int)(data->posX)][(int)(data->posY +
-		(data->dirX * data->moveSpeed * 2))] == '0')
-			data->posY += data->dirX * data->moveSpeed;
+		if (data->map[(int)(data->pos_x -
+		data->dir_y * data->movespeed)][(int)(data->pos_y)] == '0')
+			data->pos_x -= data->dir_y * data->movespeed;
+		if (data->map[(int)(data->pos_x)][(int)(data->pos_y +
+		(data->dir_x * data->movespeed * 2))] == '0')
+			data->pos_y += data->dir_x * data->movespeed;
 	}
 	else if (data->go_right == 1)
 	{
-		if (data->map[(int)(data->posX + (data->dirY *
-		data->moveSpeed * 2))][(int)(data->posY)] == '0')
-			data->posX += data->dirY * (data->moveSpeed);
-		if(data->map[(int)(data->posX)][(int)(data->posY -
-		(data->dirX * data->moveSpeed * 2))] == '0')
-			data->posY -= data->dirX * data->moveSpeed;
+		if (data->map[(int)(data->pos_x + (data->dir_y *
+		data->movespeed * 2))][(int)(data->pos_y)] == '0')
+			data->pos_x += data->dir_y * (data->movespeed);
+		if(data->map[(int)(data->pos_x)][(int)(data->pos_y -
+		(data->dir_x * data->movespeed * 2))] == '0')
+			data->pos_y -= data->dir_x * data->movespeed;
 	}
 }
 
 void	rotation(t_data *data)
 {
-	double oldDirX = data->dirX;
-	double oldPlaneX = data->planeX;
+	double oldDirX = data->dir_x;
+	double oldPlaneX = data->plane_x;
 
 	if (data->right_rotate == 1)
 	{
-		data->dirX = data->dirX * cos(-data->rotSpeed) -
-		data->dirY * sin(-data->rotSpeed);
-		data->dirY = oldDirX * sin(-data->rotSpeed) +
-		data->dirY * cos(-data->rotSpeed);
-		data->planeX = data->planeX * cos(-data->rotSpeed) -
-		data->planeY * sin(-data->rotSpeed);
-		data->planeY = oldPlaneX * sin(-data->rotSpeed) +
-		data->planeY * cos(-data->rotSpeed);
+		data->dir_x = data->dir_x * cos(-data->rotspeed) -
+		data->dir_y * sin(-data->rotspeed);
+		data->dir_y = oldDirX * sin(-data->rotspeed) +
+		data->dir_y * cos(-data->rotspeed);
+		data->plane_x = data->plane_x * cos(-data->rotspeed) -
+		data->plane_y * sin(-data->rotspeed);
+		data->plane_y = oldPlaneX * sin(-data->rotspeed) +
+		data->plane_y * cos(-data->rotspeed);
 	}
 	else if (data->left_rotate == 1)
 	{
-		data->dirX = data->dirX * cos(data->rotSpeed) -
-		data->dirY * sin(data->rotSpeed);
-		data->dirY = oldDirX * sin(data->rotSpeed) +
-		data->dirY * cos(data->rotSpeed);
-		data->planeX = data->planeX * cos(data->rotSpeed) -
-		data->planeY * sin(data->rotSpeed);
-		data->planeY = oldPlaneX * sin(data->rotSpeed) +
-		data->planeY * cos(data->rotSpeed);
+		data->dir_x = data->dir_x * cos(data->rotspeed) -
+		data->dir_y * sin(data->rotspeed);
+		data->dir_y = oldDirX * sin(data->rotspeed) +
+		data->dir_y * cos(data->rotspeed);
+		data->plane_x = data->plane_x * cos(data->rotspeed) -
+		data->plane_y * sin(data->rotspeed);
+		data->plane_y = oldPlaneX * sin(data->rotspeed) +
+		data->plane_y * cos(data->rotspeed);
 	}
 }
 

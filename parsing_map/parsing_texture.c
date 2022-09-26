@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:58:14 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 20:31:31 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:49:28 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ int check_file(t_data *data)
 {
 	int	fd;
 
-	fd = open(data->SO, O_RDONLY);
+	fd = open(data->so, O_RDONLY);
 	if(fd < 0)
 		return(ERROR);
 	close(fd);
-		fd = open(data->NO, O_RDONLY);
+		fd = open(data->no, O_RDONLY);
 	if(fd < 0)
 		return(ERROR);
 	close(fd);
-	fd = open(data->EA, O_RDONLY);
+	fd = open(data->ea, O_RDONLY);
 	if(fd < 0)
 		return(ERROR);
 	close(fd);
-	fd = open(data->WE, O_RDONLY);
+	fd = open(data->we, O_RDONLY);
 	if(fd < 0)
 		return(ERROR);
 	close(fd);
@@ -46,17 +46,17 @@ int	init_texture_and_color(t_data *data, int nb_data)
 	while (data->file[++i] && nb_data < 6)
 	{
 		if (!ft_strncmp(data->file[i], "SO ./", 5))
-			data->SO = my_cpy(data->SO, data->file[i], "SO ./");
+			data->so = my_cpy(data->so, data->file[i], "SO ./");
 		else if (!ft_strncmp(data->file[i], "NO ./", 5))
-			data->NO = my_cpy(data->SO, data->file[i], "NO ./");
+			data->no = my_cpy(data->so, data->file[i], "NO ./");
 		else if (!ft_strncmp(data->file[i], "WE ./", 5))
-			data->WE = my_cpy(data->SO, data->file[i], "WE ./");
+			data->we = my_cpy(data->so, data->file[i], "WE ./");
 		else if (!ft_strncmp(data->file[i], "EA ./", 5))
-			data->EA = my_cpy(data->SO, data->file[i], "EA ./");
+			data->ea = my_cpy(data->so, data->file[i], "EA ./");
 		else if (!ft_strncmp(data->file[i], "F ", 2))
-			data->color_floor = my_cpy(data->SO, data->file[i], "F ");
+			data->color_floor = my_cpy(data->so, data->file[i], "F ");
 		else if (!ft_strncmp(data->file[i], "C ", 2))
-			data->color_ceiling = my_cpy(data->SO, data->file[i], "C ");
+			data->color_ceiling = my_cpy(data->so, data->file[i], "C ");
 		else if (ft_strncmp(data->file[i], "\n", 2))
 			return (ERROR);
 		if (ft_strncmp(data->file[i], "\n", 2))

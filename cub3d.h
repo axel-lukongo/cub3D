@@ -10,12 +10,10 @@
 # include "gnl/get_next_line.h"
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_EXIT	17
-# define texWidth 64
+# define TEXWIDTH 64
 # define GOOD 1
 # define ERROR -1
-# define texHeight 64
-# define mapWidth 24
-# define mapHeight 24
+# define TEXHEIGHT 64
 # define width 1100
 # define height 1000
 # define K_A 97
@@ -73,28 +71,28 @@ typedef struct s_raycast
 	double	wallX;
 }	data_raycast;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	char			*color_floor;
 	char			*color_ceiling;
-	double			posX;
-	double			posY;
-	double			dirX;
-	double			dirY;
-	double			planeX;
-	double			planeY;
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
 	void			*mlx;
 	void			*win;
 	int				buf[height][width];
 	int				**texture;
-	double			moveSpeed;
-	double			rotSpeed;
+	double			movespeed;
+	double			rotspeed;
 	int				re_buf;
 	char			**file;
-	char			*SO;
-	char			*NO;
-	char			*WE;
-	char			*EA;
+	char			*so;
+	char			*no;
+	char			*we;
+	char			*ea;
 	int				row;
 	int				col;
 	int				begin_map;

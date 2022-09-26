@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 20:40:24 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 21:00:58 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ void	calc(t_data *data, int x)
 		draw_start_end(data);
 		if (data->raycast.side == 0)
 		{
-			data->raycast.wallX = data->posY
+			data->raycast.wallX = data->pos_y
 				+ data->raycast.perpWallDist * data->raycast.rayDirY;
 		}
 		else
 		{
-			data->raycast.wallX = data->posX
+			data->raycast.wallX = data->pos_x
 				+ data->raycast.perpWallDist * data->raycast.rayDirX;
 		}
 		data->raycast.wallX -= floor(data->raycast.wallX);
-		data->raycast.texX = (int)(data->raycast.wallX * (double)texWidth);
+		data->raycast.texX = (int)(data->raycast.wallX * (double)TEXWIDTH);
 		add_texture(data, x, data->raycast.drawStart);
 		verLine(data, ft_convert_color(data->color_floor),
 			ft_convert_color(data->color_ceiling), x);
@@ -78,10 +78,10 @@ void	init_null(t_data *data)
 	data->mlx = NULL;
 	data->win = NULL;
 	data->texture = NULL;
-	data->SO = NULL;
-	data->NO = NULL;
-	data->WE = NULL;
-	data->EA = NULL;
+	data->so = NULL;
+	data->no = NULL;
+	data->we = NULL;
+	data->ea = NULL;
 	data->color_floor = NULL;
 	data->color_ceiling = NULL;
 }

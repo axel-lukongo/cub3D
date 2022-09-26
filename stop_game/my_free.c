@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:19:01 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 19:02:36 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:09:00 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,9 @@ void	free_file(t_data *data)
 	while (i < data->row)
 	{
 		free(data->file[i]);
-		// if(data->map)
-		// {
-		// 	if(i < (data->row - data->begin_map))
-		// 		free(data->map[i]);
-		// }
 		i++;
 	}
-	// free(data->map);
+	free(data->map);
 	free(data->file);
 	free(data->SO);
 	free(data->EA);

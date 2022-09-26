@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:59:09 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 16:16:21 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:02:34 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	load_image(t_data *data, int *texture, char *path, t_img *img)
 		}
 		y++;
 	}
-	// mlx_destroy_image(data->mlx, img->img);
+	mlx_destroy_image(data->mlx, img->img);
 }
 
 void	verLine(t_data *data, int color_ceil, int color_floor, int x)

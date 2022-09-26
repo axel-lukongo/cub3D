@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:28:57 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:13:32 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 21:50:32 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,15 @@ int	init_texture(t_data *data)
 
 void	init_raycast(t_data *data, int x)
 {
-	data->raycast.cameraX = 2 * x / (double)WIDTH - 1;
-		data->raycast.rayDirX = data->dir_x + data->plane_x * data->raycast.cameraX;
-		data->raycast.rayDirY = data->dir_y + data->plane_y * data->raycast.cameraX;
-		data->raycast.mapX = (int)data->pos_x;
-		data->raycast.mapY = (int)data->pos_y;
-		data->raycast.deltaDistX = fabs(1 / data->raycast.rayDirX);
-		data->raycast.deltaDistY = fabs(1 / data->raycast.rayDirY);
+	data->raycast.camera_x = 2 * x / (double)WIDTH - 1;
+	data->raycast.ray_dir_x = data->dir_x + data->plane_x
+		* data->raycast.camera_x;
+	data->raycast.ray_dir_y = data->dir_y + data->plane_y
+		* data->raycast.camera_x;
+	data->raycast.map_x = (int)data->pos_x;
+	data->raycast.map_y = (int)data->pos_y;
+	data->raycast.delta_dist_x = fabs(1 / data->raycast.ray_dir_x);
+	data->raycast.delta_dist_y = fabs(1 / data->raycast.ray_dir_y);
 }
 
 // i init the buffer
@@ -76,10 +78,10 @@ int	init_buf(t_data *data)
 			data->buf[i][j] = 0;
 		}
 	}
-	data->texture = (int **)malloc(sizeof(int *) *TEXHEIGHT);
+	data->texture = (int **)malloc(sizeof(int *) * TEXHEIGHT);
 	if (!data->texture)
 		return (ERROR);
-	if(init_texture(data) == ERROR)
-		return(ERROR);
+	if (init_texture(data) == ERROR)
+		return (ERROR);
 	return (GOOD);
 }

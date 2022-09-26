@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:19:50 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 21:40:04 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ void	calc(t_data *data, int x)
 		if (data->raycast.side == 0)
 		{
 			data->raycast.wall_x = data->pos_y
-				+ data->raycast.perpWallDist * data->raycast.rayDirY;
+				+ data->raycast.perp_wall_dist * data->raycast.ray_dir_y;
 		}
 		else
 		{
 			data->raycast.wall_x = data->pos_x
-				+ data->raycast.perpWallDist * data->raycast.rayDirX;
+				+ data->raycast.perp_wall_dist * data->raycast.ray_dir_x;
 		}
 		data->raycast.wall_x -= floor(data->raycast.wall_x);
 		data->raycast.tex_x = (int)(data->raycast.wall_x * (double)TEXWIDTH);
 		add_texture(data, x, data->raycast.draw_start);
-		verLine(data, ft_convert_color(data->color_floor),
+		draw_sky_floor(data, ft_convert_color(data->color_floor),
 			ft_convert_color(data->color_ceiling), x);
 		draw(data, x);
 	}
@@ -122,8 +122,8 @@ int	main(int ac, char **av)
 
 	init_null(&data);
 	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "mlx");//i init my window
-	data.img.img = mlx_new_image(data.mlx, WIDTH, HEIGHT); //i init my image
+	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "mlx");
+	data.img.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
 	data.img.data = (int *)mlx_get_data_addr(data.img.img,
 			&data.img.bpp, &data.img.size_l, &data.img.endian);
 	if ((init_file(&data, av[1]) == ERROR) || ac != 2 || !data.mlx)
@@ -136,7 +136,7 @@ int	main(int ac, char **av)
 	if (init_buf(&data) == ERROR)
 		return (ERROR);
 	load_texture(&data);
-	mlx_loop_hook(data.mlx, &start_game, &data);//this is where every thing start
+	mlx_loop_hook(data.mlx, &start_game, &data);
 	mlx_hook(data.win, 2, 1L << 0, key_press, &data);
 	mlx_hook(data.win, 3, 1L << 1, ft_keys_release, &data);
 	mlx_loop(data.mlx);

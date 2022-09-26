@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:19:01 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 20:49:28 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 21:33:19 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	destroy(t_data *data)
 	mlx_destroy_image(data->mlx, data->img.img);
 }
 
-void free_texture(t_data *data)
+void	free_texture(t_data *data)
 {
 	int	i;
 
@@ -44,7 +44,6 @@ void	close_my_game(t_data *data, int flag)
 	free(data->mlx);
 	exit(1);
 }
-
 
 void	free_file(t_data *data)
 {

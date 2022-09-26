@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:24:36 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 21:39:10 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ typedef struct s_img
 
 typedef struct s_raycast
 {
-	double	cameraX;
-	double	rayDirX;
-	double	rayDirY;
-	int		mapX;
-	int		mapY;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
 	//length of ray from current position to next x or y-side
-	double	sideDistX;
-	double	sideDistY;
+	double	side_dist_x;
+	double	side_dist_y;
 	//length of ray from one x or y-side to next x or y-side
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
 
 	//what direction to step in x or y direction (either +1 or -1)
 	int		step_x;
@@ -81,7 +81,7 @@ typedef struct s_raycast
 	int		tex_x;
 	int		color;
 	double	wall_x;
-}	data_raycast;
+}	t_raycast;
 
 typedef struct s_data
 {
@@ -115,7 +115,7 @@ typedef struct s_data
 	int				go_back;
 	int				go_left;
 	int				go_right;
-	data_raycast	raycast;
+	t_raycast		raycast;
 	t_img			img;
 }				t_data;
 
@@ -150,6 +150,6 @@ void	draw_start_end(t_data *data);
 void	add_texture(t_data *data, int x, int y);
 float	set_position(t_data *data, char value);
 int		ft_convert_color(char *str);
-void	verLine(t_data *data, int color_ceil, int color_floor, int x);
+void	draw_sky_floor(t_data *data, int color_ceil, int color_floor, int x);
 
 #endif // !CUB3D_H

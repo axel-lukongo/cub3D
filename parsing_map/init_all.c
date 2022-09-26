@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 01:40:22 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 19:54:04 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 21:40:36 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,13 @@ char	**init_map(t_data *data)
 {
 	char	**map;
 	int		i;
-	int begin_map;
+	int		begin_map;
 
 	i = 0;
 	begin_map = data->begin_map;
 	map = malloc(sizeof(char *) * (data->row - begin_map) + 1);
-	if(!map)
-		return(NULL);
+	if (!map)
+		return (NULL);
 	while (begin_map < data->row)
 	{
 		map[i] = data->file[begin_map];

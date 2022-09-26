@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:58:14 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 20:49:28 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 21:48:52 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,32 @@
 /*si c'est une des tectures ou couleur je l'attribue a mes variable dans ma 
 structure */
 
-int check_file(t_data *data)
+int	check_file(t_data *data)
 {
 	int	fd;
 
 	fd = open(data->so, O_RDONLY);
-	if(fd < 0)
-		return(ERROR);
+	if (fd < 0)
+		return (ERROR);
 	close(fd);
 		fd = open(data->no, O_RDONLY);
-	if(fd < 0)
-		return(ERROR);
+	if (fd < 0)
+		return (ERROR);
 	close(fd);
 	fd = open(data->ea, O_RDONLY);
-	if(fd < 0)
-		return(ERROR);
+	if (fd < 0)
+		return (ERROR);
 	close(fd);
 	fd = open(data->we, O_RDONLY);
-	if(fd < 0)
-		return(ERROR);
+	if (fd < 0)
+		return (ERROR);
 	close(fd);
-	return(GOOD);
+	return (GOOD);
 }
 
 int	init_texture_and_color(t_data *data, int nb_data)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (data->file[++i] && nb_data < 6)
@@ -79,9 +79,10 @@ int	check_texture(t_data *data)
 	if (data->begin_map == ERROR)
 		return (ERROR);
 	fd = check_file(data);
-	if (data->file[data->begin_map] && data->file[data->begin_map][0]== '\n')
+	if (data->file[data->begin_map] && data->file[data->begin_map][0] == '\n')
 	{
-		while (data->file[data->begin_map] && data->file[data->begin_map][0] == '\n')
+		while (data->file[data->begin_map]
+			&& data->file[data->begin_map][0] == '\n')
 			data->begin_map++;
 	}
 	else

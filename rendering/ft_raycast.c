@@ -6,101 +6,86 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:29:18 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:24:41 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 21:38:09 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-
-
 void	define_step(t_data *data)
 {
-	if (data->raycast.rayDirX < 0)
+	if (data->raycast.ray_dir_x < 0)
 	{
 		data->raycast.step_x = -1;
-		data->raycast.sideDistX = (data->pos_x - data->raycast.mapX) * data->raycast.deltaDistX;
+		data->raycast.side_dist_x = (data->pos_x - data->raycast.map_x)
+			* data->raycast.delta_dist_x;
 	}
 	else
 	{
 		data->raycast.step_x = 1;
-		data->raycast.sideDistX = (data->raycast.mapX + 1.0 - data->pos_x) * data->raycast.deltaDistX;
+		data->raycast.side_dist_x = (data->raycast.map_x + 1.0 - data->pos_x)
+			* data->raycast.delta_dist_x;
 	}
-	if (data->raycast.rayDirY < 0)
+	if (data->raycast.ray_dir_y < 0)
 	{
 		data->raycast.step_y = -1;
-		data->raycast.sideDistY = (data->pos_y - data->raycast.mapY) * data->raycast.deltaDistY;
+		data->raycast.side_dist_y = (data->pos_y - data->raycast.map_y)
+			* data->raycast.delta_dist_y;
 	}
 	else
 	{
 		data->raycast.step_y = 1;
-		data->raycast.sideDistY = (data->raycast.mapY + 1.0 - data->pos_y) * data->raycast.deltaDistY;
+		data->raycast.side_dist_y = (data->raycast.map_y + 1.0 - data->pos_y)
+			* data->raycast.delta_dist_y;
 	}
 }
-
-
-
-
-
 
 void	dda_function(t_data *data)
 {
-	// while we don't hit a wall.
 	while (data->raycast.hit == 0)
 	{
-		//jump to next map square, OR in x direction.
-		if (data->raycast.sideDistX < data->raycast.sideDistY)
+		if (data->raycast.side_dist_x < data->raycast.side_dist_y)
 		{
-			data->raycast.sideDistX += data->raycast.deltaDistX;
-			data->raycast.mapX += data->raycast.step_x;
+			data->raycast.side_dist_x += data->raycast.delta_dist_x;
+			data->raycast.map_x += data->raycast.step_x;
 			data->raycast.side = 0;
 		}
-		else//jump to next map square, OR in y direction.
+		else
 		{
-			data->raycast.sideDistY += data->raycast.deltaDistY;
-			data->raycast.mapY += data->raycast.step_y;
+			data->raycast.side_dist_y += data->raycast.delta_dist_y;
+			data->raycast.map_y += data->raycast.step_y;
 			data->raycast.side = 1;
 		}
-		//Check if ray has hit a wall
-		if (data->map[data->raycast.mapX][data->raycast.mapY] > '0')
+		if (data->map[data->raycast.map_x][data->raycast.map_y] > '0')
 			data->raycast.hit = 1;
 	}
 }
-
-
-
-
 
 void	draw_start_end(t_data *data)
 {
 	if (data->raycast.side == 0)
 	{
-		data->raycast.perpWallDist = (data->raycast.mapX - data->pos_x +
-		(1 - data->raycast.step_x) / 2) / data->raycast.rayDirX;
+		data->raycast.perp_wall_dist = (data->raycast.map_x - data->pos_x
+				+ (1 - data->raycast.step_x) / 2) / data->raycast.ray_dir_x;
 	}
 	else
 	{
-		data->raycast.perpWallDist = (data->raycast.mapY - data->pos_y +
-		(1 - data->raycast.step_y) / 2) / data->raycast.rayDirY;
+		data->raycast.perp_wall_dist = (data->raycast.map_y - data->pos_y
+				+ (1 - data->raycast.step_y) / 2) / data->raycast.ray_dir_y;
 	}
-
-	//Calculate HEIGHT of line to draw on screen
-	data->raycast.line_height = (int)(HEIGHT / data->raycast.perpWallDist);
-
-	//calculate lowest and highest pixel to fill in current stripe
+	data->raycast.line_height = (int)(HEIGHT / data->raycast.perp_wall_dist);
 	data->raycast.draw_start = -data->raycast.line_height / 2 + HEIGHT / 2;
-	if(data->raycast.draw_start < 0)
+	if (data->raycast.draw_start < 0)
 		data->raycast.draw_start = 0;
 	data->raycast.draw_end = data->raycast.line_height / 2 + HEIGHT / 2;
-	if(data->raycast.draw_end >= HEIGHT)
+	if (data->raycast.draw_end >= HEIGHT)
 		data->raycast.draw_end = HEIGHT - 1;
 }
-
 
 /**
  * texNum: the line where i save my texture
  * step: How much to increase the texture coordinate perscreen pixel
- * texPos: Starting texture coordinate
+ * tex_pos: Starting texture coordinate
  * 
  * @param data 
  * @param x 
@@ -109,22 +94,22 @@ void	draw_start_end(t_data *data)
 void	add_texture(t_data *data, int x, int y)
 {
 	double	step;
-	double	texPos;
-	int		texY;
+	double	tex_pos;
+	int		tex_y;
 
 	step = 1.0 * TEXHEIGHT / data->raycast.line_height;
-	texPos = (data->raycast.draw_start - HEIGHT / 2 + data->raycast.line_height / 2) * step;
-	if (data->raycast.side == 0 && data->raycast.rayDirX > 0)
+	tex_pos = (data->raycast.draw_start - HEIGHT / 2
+			+ data->raycast.line_height / 2) * step;
+	if (data->raycast.side == 0 && data->raycast.ray_dir_x > 0)
 		data->raycast.tex_x = TEXWIDTH - data->raycast.tex_x - 1;
-	if (data->raycast.side == 1 && data->raycast.rayDirY < 0)
+	if (data->raycast.side == 1 && data->raycast.ray_dir_y < 0)
 		data->raycast.tex_x = TEXWIDTH - data->raycast.tex_x - 1;
 	while (y < data->raycast.draw_end)
 	{
-		// Cast the texture coordinate to integer, and mask with (TEXHEIGHT - 1) in case of overflow
-		texY = (int)texPos & (TEXHEIGHT - 1);
-		texPos += step;
-		data->raycast.color = data->texture[2][TEXHEIGHT * texY + data->raycast.tex_x];
-		// make data->raycast.color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+		tex_y = (int)tex_pos & (TEXHEIGHT - 1);
+		tex_pos += step;
+		data->raycast.color = data->texture[2][TEXHEIGHT
+			* tex_y + data->raycast.tex_x];
 		if (data->raycast.side == 1)
 			data->raycast.color = (data->raycast.color >> 1) & 8355711;
 		data->buf[y][x] = data->raycast.color;

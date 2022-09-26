@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
+/*   Updated: 2022/09/26 21:24:36 by alukongo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
-#define CUB3D_H
+# define CUB3D_H
 
 # include "mlx/mlx.h"
 # include <math.h>
@@ -14,8 +26,8 @@
 # define GOOD 1
 # define ERROR -1
 # define TEXHEIGHT 64
-# define width 1100
-# define height 1000
+# define WIDTH 1100
+# define HEIGHT 1000
 # define K_A 97
 # define K_D 100
 # define K_LEFT 65361
@@ -41,8 +53,8 @@ typedef struct s_raycast
 	double	cameraX;
 	double	rayDirX;
 	double	rayDirY;
-	int	mapX;
-	int	mapY;
+	int		mapX;
+	int		mapY;
 	//length of ray from current position to next x or y-side
 	double	sideDistX;
 	double	sideDistY;
@@ -52,23 +64,23 @@ typedef struct s_raycast
 	double	perpWallDist;
 
 	//what direction to step in x or y direction (either +1 or -1)
-	int	stepX;
-	int	stepY;
-	
+	int		step_x;
+	int		step_y;
+
 	//it tell me if i hit a wall
-	int	hit;
+	int		hit;
 
 	//was a NS or a EW wall data->raycast.hit?
-	int side;
+	int		side;
 
-	//Calculate height of line to draw on screen
-	int	lineHeight;
+	//Calculate HEIGHT of line to draw on screen
+	int		line_height;
 
-	int	drawStart;
-	int	drawEnd;
-	int	texX;
-	int	color;
-	double	wallX;
+	int		draw_start;
+	int		draw_end;
+	int		tex_x;
+	int		color;
+	double	wall_x;
 }	data_raycast;
 
 typedef struct s_data
@@ -83,7 +95,7 @@ typedef struct s_data
 	double			plane_y;
 	void			*mlx;
 	void			*win;
-	int				buf[height][width];
+	int				buf[HEIGHT][WIDTH];
 	int				**texture;
 	double			movespeed;
 	double			rotspeed;

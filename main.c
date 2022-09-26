@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:00:58 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 21:19:50 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	my_rebuf(t_data *data)
 	i = -1;
 	if (data->re_buf == 1)
 	{
-		while (++i < height)
+		while (++i < HEIGHT)
 		{
 			j = -1;
-			while (++j < width)
+			while (++j < WIDTH)
 				data->buf[i][j] = 0;
 		}
 	}
@@ -45,7 +45,7 @@ void	my_rebuf(t_data *data)
 
 void	calc(t_data *data, int x)
 {
-	while (++x < width)
+	while (++x < WIDTH)
 	{
 		init_raycast(data, x);
 		data->raycast.hit = 0;
@@ -54,17 +54,17 @@ void	calc(t_data *data, int x)
 		draw_start_end(data);
 		if (data->raycast.side == 0)
 		{
-			data->raycast.wallX = data->pos_y
+			data->raycast.wall_x = data->pos_y
 				+ data->raycast.perpWallDist * data->raycast.rayDirY;
 		}
 		else
 		{
-			data->raycast.wallX = data->pos_x
+			data->raycast.wall_x = data->pos_x
 				+ data->raycast.perpWallDist * data->raycast.rayDirX;
 		}
-		data->raycast.wallX -= floor(data->raycast.wallX);
-		data->raycast.texX = (int)(data->raycast.wallX * (double)TEXWIDTH);
-		add_texture(data, x, data->raycast.drawStart);
+		data->raycast.wall_x -= floor(data->raycast.wall_x);
+		data->raycast.tex_x = (int)(data->raycast.wall_x * (double)TEXWIDTH);
+		add_texture(data, x, data->raycast.draw_start);
 		verLine(data, ft_convert_color(data->color_floor),
 			ft_convert_color(data->color_ceiling), x);
 		draw(data, x);
@@ -122,8 +122,8 @@ int	main(int ac, char **av)
 
 	init_null(&data);
 	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, width, height, "mlx");//i init my window
-	data.img.img = mlx_new_image(data.mlx, width, height); //i init my image
+	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "mlx");//i init my window
+	data.img.img = mlx_new_image(data.mlx, WIDTH, HEIGHT); //i init my image
 	data.img.data = (int *)mlx_get_data_addr(data.img.img,
 			&data.img.bpp, &data.img.size_l, &data.img.endian);
 	if ((init_file(&data, av[1]) == ERROR) || ac != 2 || !data.mlx)

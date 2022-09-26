@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:08:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/23 17:23:25 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:24:18 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void my_direction(t_data *data, int key)
 {
 	if (key == K_W || key == K_S)
 	{
+		printf("-------------X = %f, Y = %f-----------\n", data->posX, data->posY);
 		if (key == K_W)
 			data->go_forwar = 1;
 		else if (key == K_S)

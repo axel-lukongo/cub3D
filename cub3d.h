@@ -17,8 +17,8 @@
 #define texHeight 64
 #define mapWidth 24
 #define mapHeight 24
-#define width 600
-#define height 400
+#define width 1100
+#define height 1000
 #define K_A 97
 #define K_D 100
 #define K_LEFT 65361
@@ -138,7 +138,7 @@ void	define_step(t_data *data);
 void	dda_function(t_data *data);
 void	draw_start_end(t_data *data);
 void	add_texture(t_data *data, int x, int y);
-int		set_position(t_data *data, char value);
+float	set_position(t_data *data, char value);
 int		ft_convert_color(char *str);
 void	verLine(t_data *data, int color_ceil, int color_floor, int x);
 

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/23 20:32:54 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:11:30 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,6 @@ int	start_game(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	return (0);
 }
-
-
-	// verLine(&data, 0xFF0000, 0x0000FF);
-
-
-
 
 
 /**

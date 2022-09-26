@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:02:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/22 20:36:56 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:00:59 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	start_orientation(t_data *data, char player_orientation)
 	direction_plane(data, player_orientation);
 }
 
-int	set_position(t_data *data, char value)
+float	set_position(t_data *data, char value)
 {
 	int	i;
 	int	j;
@@ -62,16 +62,16 @@ int	set_position(t_data *data, char value)
 		j = -1;
 		while (++j < ft_strlen2(data->map[i]))
 		{
-			if (data->map[i][j] == 'N' || data->map[i][j] == 'S' || 
+			if (data->map[i][j] == 'N' || data->map[i][j] == 'S' ||
 				data->map[i][j] == 'E' || data->map[i][j] == 'W')
 			{
 				if (value == 'X')
-					return (i);
+					return (i + 0.05);
 				else
 				{
 					start_orientation(data, data->map[i][j]);
 					data->map[i][j] = '0';
-					return(j);
+					return(j + 0.5);
 				}
 			}
 		}

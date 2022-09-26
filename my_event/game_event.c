@@ -6,15 +6,15 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:08:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 15:51:08 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:52:14 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../cub3d.h"
 
-void move_back_forward(t_data *data)
+void	move_back_forward(t_data *data)
 {
-	if(data->go_forwar == 1)
+	if (data->go_forwar == 1)
 	{
 		if (data->map[(int)(data->posX +
 		data->dirX * data->moveSpeed)][(int)(data->posY)] == '0')
@@ -34,7 +34,7 @@ void move_back_forward(t_data *data)
 	}
 }
 
-void move_left_right(t_data *data)
+void	move_left_right(t_data *data)
 {
 	if (data->go_left == 1)
 	{
@@ -56,10 +56,11 @@ void move_left_right(t_data *data)
 	}
 }
 
-void rotation(t_data *data)
+void	rotation(t_data *data)
 {
 	double oldDirX = data->dirX;
 	double oldPlaneX = data->planeX;
+
 	if (data->right_rotate == 1)
 	{
 		data->dirX = data->dirX * cos(-data->rotSpeed) -
@@ -84,7 +85,7 @@ void rotation(t_data *data)
 	}
 }
 
-void my_direction(t_data *data, int key)
+void	my_direction(t_data *data, int key)
 {
 	if (key == K_W || key == K_S)
 	{

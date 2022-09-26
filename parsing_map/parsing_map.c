@@ -19,7 +19,7 @@
  * @param data 
  * @return int 
  */
-int check_doublons(t_data *data)
+int	check_doublons(t_data *data)
 {
 	int	i;
 	int	j;
@@ -57,7 +57,7 @@ int check_doublons(t_data *data)
  * @return int 
  */
 
-int check_up(char **map, int i, int j)
+int	check_up(char **map, int i, int j)
 {
 	if (i > 0)
 	{
@@ -84,7 +84,7 @@ int check_up(char **map, int i, int j)
  * @return int 
  */
 
-int check_down(char **map, int i, int j)
+int	check_down(char **map, int i, int j)
 {
 	if (j < ft_strlen(map[i + 1]))
 	{

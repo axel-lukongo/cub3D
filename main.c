@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 14:11:30 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:53:39 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 
-void my_rebuf(t_data *data)
+void	my_rebuf(t_data *data)
 {
 	int	i;
 	int	j;

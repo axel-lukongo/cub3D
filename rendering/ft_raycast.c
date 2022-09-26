@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:29:18 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 15:40:36 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:53:22 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 
-void define_step(t_data *data)
+void	define_step(t_data *data)
 {
 	if (data->raycast.rayDirX < 0)
 	{
@@ -43,7 +43,7 @@ void define_step(t_data *data)
 
 
 
-void dda_function(t_data *data)
+void	dda_function(t_data *data)
 {
 	// while we don't hit a wall.
 	while (data->raycast.hit == 0)
@@ -71,7 +71,7 @@ void dda_function(t_data *data)
 
 
 
-void draw_start_end(t_data *data)
+void	draw_start_end(t_data *data)
 {
 	if (data->raycast.side == 0)
 	{
@@ -106,7 +106,7 @@ void draw_start_end(t_data *data)
  * @param x 
  */
 
-void add_texture(t_data *data, int x, int y)
+void	add_texture(t_data *data, int x, int y)
 {
 	double step;
 	double texPos;

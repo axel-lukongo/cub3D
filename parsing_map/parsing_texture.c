@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:58:14 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 16:50:59 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/26 20:31:31 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,19 @@ int check_file(t_data *data)
 
 	fd = open(data->SO, O_RDONLY);
 	if(fd < 0)
-	{
 		return(ERROR);
-	}
+	close(fd);
+		fd = open(data->NO, O_RDONLY);
+	if(fd < 0)
+		return(ERROR);
+	close(fd);
+	fd = open(data->EA, O_RDONLY);
+	if(fd < 0)
+		return(ERROR);
+	close(fd);
+	fd = open(data->WE, O_RDONLY);
+	if(fd < 0)
+		return(ERROR);
 	close(fd);
 	return(GOOD);
 }
@@ -66,6 +76,8 @@ int	check_texture(t_data *data)
 
 	nb_data = 0;
 	data->begin_map = init_texture_and_color(data, nb_data);
+	if (data->begin_map == ERROR)
+		return (ERROR);
 	fd = check_file(data);
 	if (data->file[data->begin_map] && data->file[data->begin_map][0]== '\n')
 	{

@@ -1,33 +1,32 @@
 #ifndef CUB3D_H
 #define CUB3D_H
 
-#include "mlx/mlx.h"
-#include <math.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
+# include "mlx/mlx.h"
+# include <math.h>
+# include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
 # include <fcntl.h>
-#include "gnl/get_next_line.h"
+# include "gnl/get_next_line.h"
+# define X_EVENT_KEY_PRESS	2
+# define X_EVENT_KEY_EXIT	17
+# define texWidth 64
+# define GOOD 1
+# define ERROR -1
+# define texHeight 64
+# define mapWidth 24
+# define mapHeight 24
+# define width 1100
+# define height 1000
+# define K_A 97
+# define K_D 100
+# define K_LEFT 65361
+# define K_RIGHT 65363
+# define K_W 119
+# define K_S 115
+# define K_ESC 65307
 
-#define X_EVENT_KEY_PRESS	2
-#define X_EVENT_KEY_EXIT	17
-#define texWidth 64
-#define GOOD 1
-#define ERROR -1
-#define texHeight 64
-#define mapWidth 24
-#define mapHeight 24
-#define width 1100
-#define height 1000
-#define K_A 97
-#define K_D 100
-#define K_LEFT 65361
-#define K_RIGHT 65363
-#define K_W 119
-#define K_S 115
-#define K_ESC 65307
-
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	int		*data;
@@ -39,7 +38,7 @@ typedef struct	s_img
 	int		img_height;
 }				t_img;
 
-typedef struct	s_raycast
+typedef struct s_raycast
 {
 	double	cameraX;
 	double	rayDirX;
@@ -76,39 +75,38 @@ typedef struct	s_raycast
 
 typedef struct	s_data
 {
-	void	*wall;
-	char	*color_floor;
-	char	*color_ceiling;
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
-	void	*mlx;
-	void	*win;
-	int		buf[height][width];
-	int		**texture;
-	double	moveSpeed;
-	double	rotSpeed;
-	int		re_buf;
-	char	**file;
-	char	*SO;
-	char	*NO;
-	char	*WE;
-	char	*EA;
-	int		row;
-	int		col;
-	int		begin_map;
-	char	**map;
-	int		left_rotate;
-	int		right_rotate;
-	int		go_forwar;
-	int		go_back;
-	int		go_left;
-	int		go_right;
+	char			*color_floor;
+	char			*color_ceiling;
+	double			posX;
+	double			posY;
+	double			dirX;
+	double			dirY;
+	double			planeX;
+	double			planeY;
+	void			*mlx;
+	void			*win;
+	int				buf[height][width];
+	int				**texture;
+	double			moveSpeed;
+	double			rotSpeed;
+	int				re_buf;
+	char			**file;
+	char			*SO;
+	char			*NO;
+	char			*WE;
+	char			*EA;
+	int				row;
+	int				col;
+	int				begin_map;
+	char			**map;
+	int				left_rotate;
+	int				right_rotate;
+	int				go_forwar;
+	int				go_back;
+	int				go_left;
+	int				go_right;
 	data_raycast	raycast;
-	t_img	img;
+	t_img			img;
 }				t_data;
 
 int		key_press(int key, t_data *data);
@@ -116,6 +114,7 @@ int		start_game(t_data *data);
 void	load_image(t_data *data, int *texture, char *path, t_img *img);
 void	load_texture(t_data *data);
 void	draw(t_data *data, int x);
+void	init_null(t_data *data);
 void	init_struct(t_data *data);
 void	init_raycast(t_data *data, int x);
 int		init_buf(t_data *data);
@@ -134,7 +133,7 @@ char	**ft_split(char const *s, char c);
 void	my_free_alloc(char **tab);
 int		ft_atoi(const char *str);
 int		check_texture(t_data *data);
-int		ft_keys_release(int	keycode, t_data	*data);
+int		ft_keys_release(int keycode, t_data *data);
 void	define_step(t_data *data);
 void	dda_function(t_data *data);
 void	draw_start_end(t_data *data);

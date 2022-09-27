@@ -6,13 +6,13 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:44:05 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 15:28:38 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/27 10:03:31 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../cub3d.h"
 
-int	ft_keys_release(int	keycode, t_data	*data)
+int	ft_keys_release(int keycode, t_data	*data)
 {
 	if (keycode == K_W)
 		data->go_forwar = 0;

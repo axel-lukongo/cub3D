@@ -6,16 +6,11 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:19:01 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:33:19 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/27 19:57:02 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../cub3d.h"
-
-void	destroy(t_data *data)
-{
-	mlx_destroy_image(data->mlx, data->img.img);
-}
 
 void	free_texture(t_data *data)
 {
@@ -36,8 +31,9 @@ void	close_my_game(t_data *data, int flag)
 	if (flag > 0)
 	{
 		free_texture(data);
+		free(data->cardinal);
 	}
-	destroy(data);
+	mlx_destroy_image(data->mlx, data->img.img);
 	mlx_clear_window(data->mlx, data->win);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);

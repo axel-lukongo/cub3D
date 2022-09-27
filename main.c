@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:40:04 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:38:11 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	my_rebuf(t_data *data)
  * @param data 
  */
 
-void	calc(t_data *data, int x)
+void	ft_raycasting(t_data *data, int x)
 {
 	while (++x < WIDTH)
 	{
@@ -53,20 +53,14 @@ void	calc(t_data *data, int x)
 		dda_function(data);
 		draw_start_end(data);
 		if (data->raycast.side == 0)
-		{
 			data->raycast.wall_x = data->pos_y
 				+ data->raycast.perp_wall_dist * data->raycast.ray_dir_y;
-		}
 		else
-		{
 			data->raycast.wall_x = data->pos_x
 				+ data->raycast.perp_wall_dist * data->raycast.ray_dir_x;
-		}
 		data->raycast.wall_x -= floor(data->raycast.wall_x);
 		data->raycast.tex_x = (int)(data->raycast.wall_x * (double)TEXWIDTH);
 		add_texture(data, x, data->raycast.draw_start);
-		draw_sky_floor(data, ft_convert_color(data->color_floor),
-			ft_convert_color(data->color_ceiling), x);
 		draw(data, x);
 	}
 }
@@ -87,7 +81,7 @@ void	init_null(t_data *data)
 }
 
 /**
- * @calc i init every variable who i need for draw in 3D.
+ * @ft_raycasting i init every variable who i need for draw in 3D.
  * @draw when my variable has been calculate i will draw a
  * column according to my variable
  * i do this in loop until i close my game.
@@ -98,7 +92,7 @@ void	init_null(t_data *data)
 int	start_game(t_data *data)
 {
 	my_rebuf(data);
-	calc(data, -1);
+	ft_raycasting(data, -1);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	return (0);
 }

@@ -6,11 +6,19 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:59:09 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:39:34 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:36:58 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../cub3d.h"
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	int	*dst;
+
+	dst = data->img.data + (y * data->img.size_l + x * (data->img.bpp / 8));
+	*(unsigned int *)dst = color;
+}
 
 void	load_image(t_data *data, int *texture, char *path, t_img *img)
 {
@@ -58,14 +66,10 @@ void	load_texture(t_data *data)
 {
 	t_img	img;
 
-	load_image(data, data->texture[0], "textures/eagle.xpm", &img);
-	load_image(data, data->texture[1], "textures/redbrick.xpm", &img);
-	load_image(data, data->texture[2], data->so, &img);
-	load_image(data, data->texture[3], "textures/greystone.xpm", &img);
-	load_image(data, data->texture[4], "textures/bluestone.xpm", &img);
-	load_image(data, data->texture[5], "textures/mossy.xpm", &img);
-	load_image(data, data->texture[6], "textures/wood.xpm", &img);
-	load_image(data, data->texture[7], "textures/colorstone.xpm", &img);
+	load_image(data, data->texture[0], data->cardinal[0], &img);
+	load_image(data, data->texture[1], data->cardinal[1], &img);
+	load_image(data, data->texture[2], data->cardinal[2], &img);
+	load_image(data, data->texture[3], data->cardinal[3], &img);
 }
 
 //this function allow me to draw a line
@@ -73,6 +77,8 @@ void	draw(t_data *data, int x)
 {
 	int	y;
 
+	draw_sky_floor(data, ft_convert_color(data->color_floor),
+		ft_convert_color(data->color_ceiling), x);
 	y = data->raycast.draw_start;
 	while (y < data->raycast.draw_end)
 	{

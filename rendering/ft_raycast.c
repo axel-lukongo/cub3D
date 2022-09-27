@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:29:18 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:38:09 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/27 15:27:36 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,10 @@ void	add_texture(t_data *data, int x, int y)
 		data->raycast.color = data->texture[2][TEXHEIGHT
 			* tex_y + data->raycast.tex_x];
 		if (data->raycast.side == 1)
+		{
+			
 			data->raycast.color = (data->raycast.color >> 1) & 8355711;
+		}
 		data->buf[y][x] = data->raycast.color;
 		data->re_buf = 1;
 		y++;

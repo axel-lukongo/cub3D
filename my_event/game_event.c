@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:08:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:53:28 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/27 11:18:19 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	move_back_forward(t_data *data)
 	if (data->go_forwar == 1)
 	{
 		if (data->map[(int)(data->pos_x
-			+ data->dir_x * data->movespeed)][(int)(data->pos_y)] == '0')
+				+ data->dir_x * data->movespeed)][(int)(data->pos_y)] == '0')
 			data->pos_x += data->dir_x * data->movespeed;
 		if (data->map[(int)(data->pos_x)][(int)(data->pos_y +
 		data->dir_y * data->movespeed)] == '0')
@@ -26,7 +26,7 @@ void	move_back_forward(t_data *data)
 	else if (data->go_back == 1)
 	{
 		if (data->map[(int)(data->pos_x
-			- data->dir_x * data->movespeed)][(int)(data->pos_y)] == '0')
+				- data->dir_x * data->movespeed)][(int)(data->pos_y)] == '0')
 			data->pos_x -= data->dir_x * data->movespeed;
 		if (data->map[(int)(data->pos_x)][(int)(data->pos_y -
 		data->dir_y * data->movespeed)] == '0')
@@ -39,7 +39,7 @@ void	move_left_right(t_data *data)
 	if (data->go_left == 1)
 	{
 		if (data->map[(int)(data->pos_x
-			- data->dir_y * data->movespeed)][(int)(data->pos_y)] == '0')
+				- data->dir_y * data->movespeed)][(int)(data->pos_y)] == '0')
 			data->pos_x -= data->dir_y * data->movespeed;
 		if (data->map[(int)(data->pos_x)][(int)(data->pos_y +
 		(data->dir_x * data->movespeed * 2))] == '0')
@@ -47,42 +47,37 @@ void	move_left_right(t_data *data)
 	}
 	else if (data->go_right == 1)
 	{
-		if (data->map[(int)(data->pos_x + (data->dir_y *
-		data->movespeed * 2))][(int)(data->pos_y)] == '0')
+		if (data->map[(int)(data->pos_x + (data->dir_y
+					* data->movespeed * 2))][(int)(data->pos_y)] == '0')
 			data->pos_x += data->dir_y * (data->movespeed);
-		if(data->map[(int)(data->pos_x)][(int)(data->pos_y -
+		if (data->map[(int)(data->pos_x)][(int)(data->pos_y -
 		(data->dir_x * data->movespeed * 2))] == '0')
 			data->pos_y -= data->dir_x * data->movespeed;
 	}
 }
 
-void	rotation(t_data *data)
+void	rotation(t_data *data, double old_dir_x, double old_plane_x)
 {
-	double	oldDirX;
-	double	oldPlaneX;
-
-	oldPlaneX = data->plane_x;
-	oldDirX = data->dir_x;
 	if (data->right_rotate == 1)
 	{
 		data->dir_x = data->dir_x * cos(-data->rotspeed)
 			- data->dir_y * sin(-data->rotspeed);
-		data->dir_y = oldDirX * sin(-data->rotspeed)
+		data->dir_y = old_dir_x * sin(-data->rotspeed)
 			+ data->dir_y * cos(-data->rotspeed);
 		data->plane_x = data->plane_x * cos(-data->rotspeed)
 			- data->plane_y * sin(-data->rotspeed);
-		data->plane_y = oldPlaneX * sin(-data->rotspeed)
+		data->plane_y = old_plane_x * sin(-data->rotspeed)
 			+ data->plane_y * cos(-data->rotspeed);
 	}
 	else if (data->left_rotate == 1)
 	{
 		data->dir_x = data->dir_x * cos(data->rotspeed)
 			- data->dir_y * sin(data->rotspeed);
-		data->dir_y = oldDirX * sin(data->rotspeed)
+		data->dir_y = old_dir_x * sin(data->rotspeed)
 			+ data->dir_y * cos(data->rotspeed);
 		data->plane_x = data->plane_x * cos(data->rotspeed)
 			- data->plane_y * sin(data->rotspeed);
-		data->plane_y = oldPlaneX * sin(data->rotspeed)
+		data->plane_y = old_plane_x * sin(data->rotspeed)
 			+ data->plane_y * cos(data->rotspeed);
 	}
 }
@@ -111,7 +106,7 @@ void	my_direction(t_data *data, int key)
 			data->right_rotate = 1;
 		else if (key == K_LEFT)
 			data->left_rotate = 1;
-		rotation(data);
+		rotation(data, data->dir_x, data->plane_x);
 	}
 }
 

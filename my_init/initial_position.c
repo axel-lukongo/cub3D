@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:02:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 20:57:15 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:59:19 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,63 @@ void	direction_plane(t_data *data, char player_orientation)
 	}
 }
 
+void	cardinal_point(t_data *data, int orientation)
+{
+	if (orientation == 1)
+	{
+		data->cardinal[0] = data->no;
+		data->cardinal[1] = data->so;
+		data->cardinal[2] = data->we;
+		data->cardinal[3] = data->ea;
+	}
+	else if (orientation == 2)
+	{
+		data->cardinal[0] = data->so;
+		data->cardinal[1] = data->no;
+		data->cardinal[2] = data->we;
+		data->cardinal[3] = data->ea;
+	}
+	else if (orientation == 3)
+	{
+		data->cardinal[0] = data->ea;
+		data->cardinal[1] = data->we;
+		data->cardinal[2] = data->no;
+		data->cardinal[3] = data->so;
+	}
+	else
+	{
+		data->cardinal[0] = data->we;
+		data->cardinal[1] = data->ea;
+		data->cardinal[2] = data->no;
+		data->cardinal[3] = data->so;
+	}
+}
+
 void	start_orientation(t_data *data, char player_orientation)
 {
 	if (player_orientation == 'N')
 	{
 		data->plane_y = 0.66;
 		data->dir_x = -1;
+		cardinal_point(data, 1);
 	}
 	else if (player_orientation == 'S')
 	{
 		data->plane_y = -0.66;
 		data->dir_x = 1;
+		cardinal_point(data, 2);
 	}
 	else if (player_orientation == 'E')
 	{
 		data->plane_x = 0.66;
 		data->dir_y = 1;
+		cardinal_point(data, 3);
 	}
 	else if (player_orientation == 'W')
 	{
 		data->plane_x = -0.66;
 		data->dir_y = -1;
+		cardinal_point(data, 4);
 	}
 	direction_plane(data, player_orientation);
 }
@@ -66,7 +102,7 @@ float	set_position(t_data *data, char value)
 				data->map[i][j] == 'E' || data->map[i][j] == 'W')
 			{
 				if (value == 'X')
-					return (i + 0.05);
+					return (i + 0.5);
 				else
 				{
 					start_orientation(data, data->map[i][j]);

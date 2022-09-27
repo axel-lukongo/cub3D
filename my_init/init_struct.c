@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:28:57 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:50:32 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/27 13:39:36 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_struct(t_data *data)
 {
+	data->cardinal = malloc(sizeof(char *) * 5 + 1);
 	data->pos_x = set_position(data, 'X');
 	data->pos_y = set_position(data, 'Y');
 	data->re_buf = 0;

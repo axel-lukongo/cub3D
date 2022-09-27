@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/27 19:58:48 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/27 21:04:11 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ typedef struct s_data
 int		key_press(int key, t_data *data);
 int		start_game(t_data *data);
 void	load_image(t_data *data, int *texture, char *path, t_img *img);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		my_add_color(t_data *data, int x, int y);
 void	load_texture(t_data *data);
 void	draw(t_data *data, int x);
 void	init_null(t_data *data);

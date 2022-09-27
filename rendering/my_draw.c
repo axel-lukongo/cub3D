@@ -6,18 +6,20 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:59:09 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/27 20:36:58 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/27 21:45:24 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../cub3d.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+int	my_add_color(t_data *data, int x, int y)
 {
 	int	*dst;
+	int	color;
 
 	dst = data->img.data + (y * data->img.size_l + x * (data->img.bpp / 8));
-	*(unsigned int *)dst = color;
+	color = *(unsigned int *)dst;
+	return (color);
 }
 
 void	load_image(t_data *data, int *texture, char *path, t_img *img)

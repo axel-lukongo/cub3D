@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/27 20:38:11 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:44:59 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	ft_raycasting(t_data *data, int x)
 		define_step(data);
 		dda_function(data);
 		draw_start_end(data);
-		if (data->raycast.side == 0)
+		if (data->raycast.side == 0)//i should init my texture of cardinal point here
 			data->raycast.wall_x = data->pos_y
 				+ data->raycast.perp_wall_dist * data->raycast.ray_dir_y;
-		else
+		else // or here
 			data->raycast.wall_x = data->pos_x
 				+ data->raycast.perp_wall_dist * data->raycast.ray_dir_x;
 		data->raycast.wall_x -= floor(data->raycast.wall_x);

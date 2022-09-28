@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:02:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/28 12:46:00 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:18:33 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,12 @@ float	set_position(t_data *data, char value)
 				data->map[i][j] == 'E' || data->map[i][j] == 'W')
 			{
 				if (value == 'X')
-					return (i + 0.5);
+					return (i + 0.0005);
 				else
 				{
 					start_orientation(data, data->map[i][j]);
 					data->map[i][j] = '0';
-					return (j + 0.5);
+					return (j + 0.0005);
 				}
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/28 20:24:44 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/28 20:32:43 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	init_null(&data);
-	// data.mlx = mlx_init();
 	if (ac != 2 || (init_file(&data, av[1]) == ERROR))//i should watch if the map is valid before i malloc
 	{
 		printf("\033[1;31mERROR\n\033[0m");

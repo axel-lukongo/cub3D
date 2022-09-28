@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:59:09 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/28 15:35:56 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:51:53 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ void	draw_sky_floor(t_data *data, int color_ceil, int color_floor, int x)
 	y = 0;
 	while (y < data->raycast.draw_start)
 	{
-		data->img.data[y * WIDTH + x] = color_ceil;
+		data->img.data[y * WIDTH + x] = color_floor;
 		y++;
 	}
 	y = data->raycast.draw_end;
 	while (y < HEIGHT)
 	{
-		data->img.data[y * WIDTH + x] = color_floor;
+		data->img.data[y * WIDTH + x] = color_ceil;
 		y++;
 	}
 	x++;

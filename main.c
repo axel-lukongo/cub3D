@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/28 15:08:45 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/28 20:24:44 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,17 +120,19 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	init_null(&data);
+	// data.mlx = mlx_init();
+	if (ac != 2 || (init_file(&data, av[1]) == ERROR))//i should watch if the map is valid before i malloc
+	{
+		printf("\033[1;31mERROR\n\033[0m");
+		if (ac == 2)
+			close_my_game(&data, 0);
+		return (0);
+	}
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "mlx");
 	data.img.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
 	data.img.data = (int *)mlx_get_data_addr(data.img.img,
 			&data.img.bpp, &data.img.size_l, &data.img.endian);
-	if ((init_file(&data, av[1]) == ERROR) || ac != 2 || !data.mlx)
-	{
-		printf("\033[1;31mERROR\n\033[0m");
-		close_my_game(&data, 0);
-		return (0);
-	}
 	init_struct(&data);
 	if (init_buf(&data) == ERROR)
 		return (ERROR);

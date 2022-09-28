@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:19:01 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/27 19:57:02 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:28:37 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	free_texture(t_data *data)
 
 void	close_my_game(t_data *data, int flag)
 {
-	free_file(data);
+	if (data->file)
+		free_file(data);
 	if (flag > 0)
 	{
 		free_texture(data);

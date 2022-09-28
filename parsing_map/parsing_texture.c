@@ -6,11 +6,32 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:58:14 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:48:52 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/28 21:33:18 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../cub3d.h"
+
+int check_color(t_data *data)
+{
+	char **str;
+	
+	str = ft_split(data->color_ceiling, ',');
+	if (ft_isdigit(str[0]) > 0 && ft_isdigit(str[1]) > 0
+		&& ft_isdigit(str[2]) > 0)
+	{
+		my_free_alloc(str);
+		str = ft_split(data->color_floor, ',');
+		if (ft_isdigit(str[0]) > 0 && ft_isdigit(str[1]) > 0
+			&& ft_isdigit(str[2]) > 0)
+			{
+				my_free_alloc(str);
+				return (GOOD);
+			}
+	}
+	my_free_alloc(str);
+	return (ERROR);
+}
 
 /*si c'est une des tectures ou couleur je l'attribue a mes variable dans ma 
 structure */
@@ -32,7 +53,7 @@ int	check_file(t_data *data)
 		return (ERROR);
 	close(fd);
 	fd = open(data->we, O_RDONLY);
-	if (fd < 0)
+	if (fd < 0 || check_color(data) == ERROR)
 		return (ERROR);
 	close(fd);
 	return (GOOD);

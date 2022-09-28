@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/28 15:36:08 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/28 21:19:03 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ int		init_file(t_data *data, char *file);
 int		ft_strlen(char *s);
 int		ft_strlen2(char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_isdigit(char *str);
 char	*my_cpy(char *dest, char *src, char *to_skip);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
 char	**ft_split(char const *s, char c);

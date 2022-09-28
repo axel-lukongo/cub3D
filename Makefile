@@ -23,6 +23,7 @@ SRCS =	main.c\
 		functions/ft_strncpy.c\
 		functions/ft_split.c\
 		functions/ft_atoi.c\
+		functions/ft_isdigit.c\
 		stop_game/my_free.c\
 
 

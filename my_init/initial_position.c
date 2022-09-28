@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:02:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/27 17:59:19 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:46:00 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	cardinal_point(t_data *data, int orientation)
 	{
 		data->cardinal[0] = data->no;
 		data->cardinal[1] = data->so;
-		data->cardinal[2] = data->we;
-		data->cardinal[3] = data->ea;
+		data->cardinal[2] = data->ea;
+		data->cardinal[3] = data->we;
 	}
 	else if (orientation == 2)
 	{
@@ -60,29 +60,26 @@ void	cardinal_point(t_data *data, int orientation)
 
 void	start_orientation(t_data *data, char player_orientation)
 {
+	cardinal_point(data, 1);
 	if (player_orientation == 'N')
 	{
 		data->plane_y = 0.66;
 		data->dir_x = -1;
-		cardinal_point(data, 1);
 	}
 	else if (player_orientation == 'S')
 	{
 		data->plane_y = -0.66;
 		data->dir_x = 1;
-		cardinal_point(data, 2);
 	}
 	else if (player_orientation == 'E')
 	{
 		data->plane_x = 0.66;
 		data->dir_y = 1;
-		cardinal_point(data, 3);
 	}
 	else if (player_orientation == 'W')
 	{
 		data->plane_x = -0.66;
 		data->dir_y = -1;
-		cardinal_point(data, 4);
 	}
 	direction_plane(data, player_orientation);
 }

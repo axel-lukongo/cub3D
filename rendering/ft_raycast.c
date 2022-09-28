@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:29:18 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/27 21:45:58 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:59:39 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,23 +108,21 @@ void	add_texture(t_data *data, int x, int y)
 	{
 		tex_y = (int)tex_pos & (TEXHEIGHT - 1);
 		tex_pos += step;
-		data->raycast.color = data->texture[2][TEXHEIGHT
-			* tex_y + data->raycast.tex_x];
 		if (data->raycast.side == 1)
 		{
-			if (data->dir_x < 0)//N
+			if (data->raycast.ray_dir_x > 0)//N
 				data->raycast.color = data->texture[0][TEXHEIGHT
 					* tex_y + data->raycast.tex_x];
-			else if (data->dir_x > 0)//S
+			else if (data->raycast.ray_dir_x < 0)//S
 				data->raycast.color = data->texture[1][TEXHEIGHT
 					* tex_y + data->raycast.tex_x];
 		}
-		else
+		if (data->raycast.side == 0)
 		{
-			if (data->dir_y > 0) //E
+			if (data->raycast.ray_dir_y < 0) //E
 				data->raycast.color = data->texture[2][TEXHEIGHT
 					* tex_y + data->raycast.tex_x];
-			else if (data->dir_y < 0)//W
+			else if (data->raycast.ray_dir_y > 0)//W
 				data->raycast.color = data->texture[3][TEXHEIGHT
 					* tex_y + data->raycast.tex_x];
 		}

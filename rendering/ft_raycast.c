@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:29:18 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/28 15:20:20 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:37:30 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void	add_texture(t_data *data, int x, int y)
 {
 	double	step;
 	double	tex_pos;
-	int		tex_y;
 
 	step = 1.0 * TEXHEIGHT / data->raycast.line_height;
 	tex_pos = (data->raycast.draw_start - HEIGHT / 2
@@ -106,26 +105,9 @@ void	add_texture(t_data *data, int x, int y)
 		data->raycast.tex_x = TEXWIDTH - data->raycast.tex_x - 1;
 	while (y < data->raycast.draw_end)
 	{
-		tex_y = (int)tex_pos & (TEXHEIGHT - 1);
+		data->raycast.tex_y = (int)tex_pos & (TEXHEIGHT - 1);
 		tex_pos += step;
-		if (data->raycast.side == 0)
-		{
-			if (data->raycast.ray_dir_x < 0) //E
-				data->raycast.color = data->texture[0][TEXHEIGHT
-					* tex_y + data->raycast.tex_x];
-			else if (data->raycast.ray_dir_x > 0)//W
-				data->raycast.color = data->texture[1][TEXHEIGHT
-					* tex_y + data->raycast.tex_x];
-		}
-		if (data->raycast.side == 1)
-		{
-			if (data->raycast.ray_dir_y > 0)//N
-				data->raycast.color = data->texture[2][TEXHEIGHT
-					* tex_y + data->raycast.tex_x];
-			else if (data->raycast.ray_dir_y < 0)//S
-				data->raycast.color = data->texture[3][TEXHEIGHT
-					* tex_y + data->raycast.tex_x]; 
-		}
+		draw_cardinal_texture(data);
 		data->buf[y][x] = data->raycast.color;
 		data->re_buf = 1;
 		y++;

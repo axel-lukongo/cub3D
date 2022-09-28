@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/27 21:04:11 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:36:08 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_raycast
 	int		draw_start;
 	int		draw_end;
 	int		tex_x;
+	int		tex_y;
 	int		color;
 	double	wall_x;
 }	t_raycast;
@@ -126,6 +127,7 @@ void	load_image(t_data *data, int *texture, char *path, t_img *img);
 int		my_add_color(t_data *data, int x, int y);
 void	load_texture(t_data *data);
 void	draw(t_data *data, int x);
+void	draw_cardinal_texture(t_data *data);
 void	init_null(t_data *data);
 void	init_struct(t_data *data);
 void	init_raycast(t_data *data, int x);

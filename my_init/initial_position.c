@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:02:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/28 14:18:33 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:32:10 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,41 +26,18 @@ void	direction_plane(t_data *data, char player_orientation)
 	}
 }
 
-void	cardinal_point(t_data *data, int orientation)
+void	init_cardinal_point(t_data *data)
 {
-	if (orientation == 1)
-	{
-		data->cardinal[0] = data->no;
-		data->cardinal[1] = data->so;
-		data->cardinal[2] = data->ea;
-		data->cardinal[3] = data->we;
-	}
-	else if (orientation == 2)
-	{
-		data->cardinal[0] = data->so;
-		data->cardinal[1] = data->no;
-		data->cardinal[2] = data->we;
-		data->cardinal[3] = data->ea;
-	}
-	else if (orientation == 3)
-	{
-		data->cardinal[0] = data->ea;
-		data->cardinal[1] = data->we;
-		data->cardinal[2] = data->no;
-		data->cardinal[3] = data->so;
-	}
-	else
-	{
-		data->cardinal[0] = data->we;
-		data->cardinal[1] = data->ea;
-		data->cardinal[2] = data->no;
-		data->cardinal[3] = data->so;
-	}
+	data->cardinal[0] = data->no;
+	data->cardinal[1] = data->so;
+	data->cardinal[2] = data->ea;
+	data->cardinal[3] = data->we;
+	
 }
 
 void	start_orientation(t_data *data, char player_orientation)
 {
-	cardinal_point(data, 1);
+	init_cardinal_point(data);
 	if (player_orientation == 'N')
 	{
 		data->plane_y = 0.66;

@@ -1,7 +1,7 @@
 NO ./textures/redbrick.xpm
 SO ./textures/purplestone.xpm
 EA ./textures/greystone.xpm
-WE ./textures/bluestone.xp
+WE ./textures/bluestone.xpm
 F 204,204,254
 C 254,254,226
 

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:59:09 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 11:40:26 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 14:36:20 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	draw(t_data *data, int x)
 	y = data->raycast.draw_start;
 	while (y < data->raycast.draw_end)
 	{
-			data->img.data[y * WIDTH + x] = data->buf[y][x];
+		data->img.data[y * WIDTH + x] = data->buf[y][x];
 		y++;
 	}
 }

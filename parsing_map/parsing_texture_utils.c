@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 13:52:43 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 16:27:17 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:58:16 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	check_color(t_data *data)
 
 int	check_access_file(t_data *data)
 {
-	int	fd;
+	int		fd;
 
 	fd = open(data->so, O_RDONLY);
 	if (fd < 0)

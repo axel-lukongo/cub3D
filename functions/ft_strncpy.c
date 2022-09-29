@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 11:32:32 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 11:38:01 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:52:22 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	unsigned int	i;
 
 	i = 0;
-	while (src[i] != '\0' && i < n && src[i] != '\n')
+	while (src[i] != '\0' && i < n && src[i] != '\n' && src[i] != ' ')
 	{
 		dest[i] = src[i];
 		i++;

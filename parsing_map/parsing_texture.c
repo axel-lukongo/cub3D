@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:58:14 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 16:45:29 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:02:58 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,30 @@
  * @param i 
  * @return int 
  */
-int	init_texture2(t_data *data, int i)
+int	init_texture2(t_data *data, char *str, int index)
 {
-	if (!ft_strncmp(data->file[i], "SO ./", 5))
+	if (!ft_strncmp(&str[index], "SO ", 3))
 	{
 		if (!data->so)
-			data->so = my_cpy(data->so, data->file[i], "SO ./");
+			data->so = my_cpy(data->so, &str[index], "SO ");
 		return (2);
 	}
-	else if (!ft_strncmp(data->file[i], "NO ./", 5))
+	else if (!ft_strncmp(&str[index], "NO ", 3))
 	{
 		if (!data->no)
-			data->no = my_cpy(data->so, data->file[i], "NO ./");
+			data->no = my_cpy(data->no, &str[index], "NO ");
 		return (2);
 	}
-	else if (!ft_strncmp(data->file[i], "WE ./", 5))
+	else if (!ft_strncmp(&str[index], "WE ", 3))
 	{
 		if (!data->we)
-			data->we = my_cpy(data->so, data->file[i], "WE ./");
+			data->we = my_cpy(data->we, &str[index], "WE ");
 		return (2);
 	}
-	else if (!ft_strncmp(data->file[i], "EA ./", 5))
+	else if (!ft_strncmp(&str[index], "EA ", 3))
 	{
 		if (!data->ea)
-			data->ea = my_cpy(data->so, data->file[i], "EA ./");
+			data->ea = my_cpy(data->ea, &str[index], "EA ");
 		return (2);
 	}
 	return (1);
@@ -58,26 +58,30 @@ int	init_texture2(t_data *data, int i)
  * @param i 
  * @return int 
  */
-int	init_texture_and_color(t_data *data, int nb_data, int i)
+int	init_texture_and_color(t_data *data, int nb_data, int i, int index)
 {
 	while (data->file[++i] && nb_data < 6)
 	{
-		if (init_texture2(data, i) != 2)
+		index = 0;
+		data->s = data->file[i];
+		while (data->s[index] == ' ')
+			index++;
+		if (init_texture2(data, data->s, index) != 2)
 		{
-			if (!ft_strncmp(data->file[i], "F ", 2))
+			if (!ft_strncmp(&data->s[index], "F ", 2))
 			{
 				if (!data->color_floor)
-					data->color_floor = my_cpy(data->so, data->file[i], "F ");
+					data->color_floor = my_cpy(data->tm, &data->s[index], "F ");
 			}
-			else if (!ft_strncmp(data->file[i], "C ", 2))
+			else if (!ft_strncmp(&data->s[index], "C ", 2))
 			{
 				if (!data->color_ceiling)
-					data->color_ceiling = my_cpy(data->so, data->file[i], "C ");
+					data->color_ceiling = my_cpy(data->tm, &data->s[index], "C ");
 			}
-			else if (ft_strncmp(data->file[i], "\n", 2))
+			else if (ft_strncmp(&data->s[index], "\n", 2))
 				return (ERROR);
 		}
-		if (ft_strncmp(data->file[i], "\n", 2))
+		if (ft_strncmp(&data->s[index], "\n", 2))
 			nb_data++;
 	}
 	if (nb_data < 6 || check_info(data) == ERROR)
@@ -93,7 +97,7 @@ int	check_texture(t_data *data)
 	int	fd;
 
 	nb_data = 0;
-	data->begin_map = init_texture_and_color(data, nb_data, -1);
+	data->begin_map = init_texture_and_color(data, nb_data, -1, 0);
 	if (data->begin_map == ERROR)
 		return (ERROR);
 	fd = check_access_file(data);

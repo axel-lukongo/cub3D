@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 21:33:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 11:38:17 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:54:59 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ char	*my_cpy(char *dest, char *src, char *to_skip)
 		i++;
 	if (ft_strncmp(&src[i], to_skip, ft_strlen(to_skip)))
 		return (NULL);
-	i += 5;
-	dest = ft_strncpy(dest, src + ft_strlen(to_skip), ft_strlen2(src));
+	i += ft_strlen(to_skip);
+	while (src[i] == ' ')
+		i++;
+	dest = ft_strncpy(dest, src + i, ft_strlen2(src));
 	return (dest);
 }

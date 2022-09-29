@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 13:55:03 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:03:54 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ typedef struct s_data
 {
 	char			*color_floor;
 	char			*color_ceiling;
+	char			*tm;
+	char			*s;
 	double			pos_x;
 	double			pos_y;
 	double			dir_x;

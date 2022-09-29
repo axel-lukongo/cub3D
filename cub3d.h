@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/28 21:19:03 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:36:00 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,25 +55,19 @@ typedef struct s_raycast
 	double	ray_dir_y;
 	int		map_x;
 	int		map_y;
-	//length of ray from current position to next x or y-side
 	double	side_dist_x;
 	double	side_dist_y;
-	//length of ray from one x or y-side to next x or y-side
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	perp_wall_dist;
 
-	//what direction to step in x or y direction (either +1 or -1)
 	int		step_x;
 	int		step_y;
 
-	//it tell me if i hit a wall
 	int		hit;
 
-	//was a NS or a EW wall data->raycast.hit?
 	int		side;
 
-	//Calculate HEIGHT of line to draw on screen
 	int		line_height;
 
 	int		draw_start;
@@ -122,6 +116,7 @@ typedef struct s_data
 }				t_data;
 
 int		key_press(int key, t_data *data);
+int		mouse_event(t_data *data);
 int		start_game(t_data *data);
 void	load_image(t_data *data, int *texture, char *path, t_img *img);
 int		my_add_color(t_data *data, int x, int y);

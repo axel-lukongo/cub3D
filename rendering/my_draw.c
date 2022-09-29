@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:59:09 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/28 15:51:53 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:40:26 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ void	draw_cardinal_texture(t_data *data)
 {
 	if (data->raycast.side == 0)
 	{
-		if (data->raycast.ray_dir_x < 0) //E
+		if (data->raycast.ray_dir_x < 0)
 			data->raycast.color = data->texture[0][TEXHEIGHT
 				* data->raycast.tex_y + data->raycast.tex_x];
-		else if (data->raycast.ray_dir_x > 0)//W
+		else if (data->raycast.ray_dir_x > 0)
 			data->raycast.color = data->texture[1][TEXHEIGHT
 				* data->raycast.tex_y + data->raycast.tex_x];
 	}
 	if (data->raycast.side == 1)
 	{
-		if (data->raycast.ray_dir_y > 0)//N
+		if (data->raycast.ray_dir_y > 0)
 			data->raycast.color = data->texture[2][TEXHEIGHT
 				* data->raycast.tex_y + data->raycast.tex_x];
-		else if (data->raycast.ray_dir_y < 0)//S
+		else if (data->raycast.ray_dir_y < 0)
 			data->raycast.color = data->texture[3][TEXHEIGHT
-				* data->raycast.tex_y + data->raycast.tex_x]; 
+				* data->raycast.tex_y + data->raycast.tex_x];
 	}
 }
 

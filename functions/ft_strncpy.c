@@ -6,12 +6,11 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 11:32:32 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/23 12:22:54 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:38:01 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../cub3d.h"
-
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {

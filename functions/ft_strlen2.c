@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 17:28:33 by alukongo          #+#    #+#             */
-/*   Updated: 2022/08/26 17:29:00 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:37:56 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ int	ft_strlen2(char *s)
 	return (i);
 }
 
-int ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
-
 	int	i;
 
 	i = 0;

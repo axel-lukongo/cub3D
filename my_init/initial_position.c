@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:02:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/28 15:32:10 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:40:42 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	init_cardinal_point(t_data *data)
 	data->cardinal[1] = data->so;
 	data->cardinal[2] = data->ea;
 	data->cardinal[3] = data->we;
-	
 }
 
 void	start_orientation(t_data *data, char player_orientation)

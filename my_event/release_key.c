@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:44:05 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/27 10:03:31 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:29:45 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,10 @@ int	ft_keys_release(int keycode, t_data	*data)
 	else if (keycode == K_D)
 		data->go_right = 0;
 	return (0);
+}
+
+int	mouse_event(t_data *data)
+{
+	close_my_game(data, 1);
+	return (1);
 }

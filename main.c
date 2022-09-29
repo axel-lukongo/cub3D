@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/28 20:32:43 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:35:42 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void	ft_raycasting(t_data *data, int x)
 		define_step(data);
 		dda_function(data);
 		draw_start_end(data);
-		if (data->raycast.side == 0)//i should init my texture of cardinal point here
+		if (data->raycast.side == 0)
 		{
 			data->raycast.wall_x = data->pos_y
 				+ data->raycast.perp_wall_dist * data->raycast.ray_dir_y;
 		}
-		else // or here
+		else
 		{
 			data->raycast.wall_x = data->pos_x
 				+ data->raycast.perp_wall_dist * data->raycast.ray_dir_x;
@@ -98,7 +98,6 @@ int	start_game(t_data *data)
 	my_rebuf(data);
 	ft_raycasting(data, -1);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-	// mlx_clear_window(data->mlx, data->win);
 	return (0);
 }
 
@@ -120,9 +119,9 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	init_null(&data);
-	if (ac != 2 || (init_file(&data, av[1]) == ERROR))//i should watch if the map is valid before i malloc
+	if (ac != 2 || (init_file(&data, av[1]) == ERROR))
 	{
-		printf("\033[1;31mERROR\n\033[0m");
+		printf("\033[1;31mERROR\033[0m\n");
 		if (ac == 2)
 			close_my_game(&data, 0);
 		return (0);
@@ -138,6 +137,7 @@ int	main(int ac, char **av)
 	load_texture(&data);
 	mlx_loop_hook(data.mlx, &start_game, &data);
 	mlx_hook(data.win, 2, 1L << 0, key_press, &data);
+	mlx_hook(data.win, 17, 1L << 17, mouse_event, &data);
 	mlx_hook(data.win, 3, 1L << 1, ft_keys_release, &data);
 	mlx_loop(data.mlx);
 }

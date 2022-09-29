@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:58:14 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 14:00:42 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:45:29 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,12 @@ int	check_texture(t_data *data)
 	if (data->begin_map == ERROR)
 		return (ERROR);
 	fd = check_access_file(data);
-	if (data->file[data->begin_map] && data->file[data->begin_map][0] == '\n')
+	if ((data->file[data->begin_map] && data->file[data->begin_map][0] == '\n')
+		|| (data->file[data->begin_map][0] == ' '))
 	{
-		while (data->file[data->begin_map]
-			&& data->file[data->begin_map][0] == '\n')
+		while ((data->file[data->begin_map]
+				&& data->file[data->begin_map][0] == '\n')
+				|| (data->file[data->begin_map][0] == ' '))
 			data->begin_map++;
 	}
 	else

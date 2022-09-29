@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:59:09 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 14:36:20 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:04:35 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	draw(t_data *data, int x)
 	int	y;
 
 	draw_sky_floor(data, ft_convert_color(data->color_floor),
-		ft_convert_color(data->color_ceiling), x);
+		ft_convert_color(data->color_ceil), x);
 	y = data->raycast.draw_start;
 	while (y < data->raycast.draw_end)
 	{

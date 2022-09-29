@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 12:52:17 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:04:35 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	init_null(t_data *data)
 	data->we = NULL;
 	data->ea = NULL;
 	data->color_floor = NULL;
-	data->color_ceiling = NULL;
+	data->color_ceil = NULL;
 }
 
 /**

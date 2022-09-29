@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:58:14 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 19:02:58 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:11:11 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param i 
  * @return int 
  */
-int	init_texture2(t_data *data, char *str, int index)
+static int	init_texture2(t_data *data, char *str, int index)
 {
 	if (!ft_strncmp(&str[index], "SO ", 3))
 	{
@@ -49,6 +49,26 @@ int	init_texture2(t_data *data, char *str, int index)
 }
 
 /**
+ * @brief here i init my color
+ * 
+ * @param data 
+ * @param index 
+ */
+static void	init_color(t_data *data, int index)
+{
+	if (!ft_strncmp(&data->s[index], "F ", 2))
+	{
+		if (!data->color_floor)
+			data->color_floor = my_cpy(data->tm, &data->s[index], "F ");
+	}
+	else if (!ft_strncmp(&data->s[index], "C ", 2))
+	{
+		if (!data->color_ceil)
+			data->color_ceil = my_cpy(data->tm, &data->s[index], "C ");
+	}
+}
+
+/**
  * @brief lorsque je vois la tecture ou la couleur correspondant
  * je l'attribu a la variable approprier de ma structure si a la fin nb data < 6
  * alors je n'ai pas eu mes 6 information donc ERROR
@@ -58,7 +78,7 @@ int	init_texture2(t_data *data, char *str, int index)
  * @param i 
  * @return int 
  */
-int	init_texture_and_color(t_data *data, int nb_data, int i, int index)
+static int	init_texture_and_color(t_data *data, int nb_data, int i, int index)
 {
 	while (data->file[++i] && nb_data < 6)
 	{
@@ -68,15 +88,10 @@ int	init_texture_and_color(t_data *data, int nb_data, int i, int index)
 			index++;
 		if (init_texture2(data, data->s, index) != 2)
 		{
-			if (!ft_strncmp(&data->s[index], "F ", 2))
+			if (!ft_strncmp(&data->s[index], "F ", 2)
+				|| !ft_strncmp(&data->s[index], "C ", 2))
 			{
-				if (!data->color_floor)
-					data->color_floor = my_cpy(data->tm, &data->s[index], "F ");
-			}
-			else if (!ft_strncmp(&data->s[index], "C ", 2))
-			{
-				if (!data->color_ceiling)
-					data->color_ceiling = my_cpy(data->tm, &data->s[index], "C ");
+				init_color(data, index);
 			}
 			else if (ft_strncmp(&data->s[index], "\n", 2))
 				return (ERROR);

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 13:52:43 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 18:58:16 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:04:35 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_info(t_data *data)
 		return (ERROR);
 	if (!data->so)
 		return (ERROR);
-	if (!data->color_ceiling)
+	if (!data->color_ceil)
 		return (ERROR);
 	if (!data->color_floor)
 		return (ERROR);
@@ -33,7 +33,7 @@ int	check_color(t_data *data)
 {
 	char	**str;
 
-	str = ft_split(data->color_ceiling, ',');
+	str = ft_split(data->color_ceil, ',');
 	if (str[0] && str[1] && str[2])
 	{
 		if (ft_isdigit(str[0]) > 0 && ft_isdigit(str[1]) > 0

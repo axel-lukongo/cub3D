@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:19:01 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/28 20:42:19 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:04:35 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	free_file(t_data *data)
 	free(data->ea);
 	free(data->no);
 	free(data->we);
-	free(data->color_ceiling);
+	free(data->color_ceil);
 	free(data->color_floor);
 }
 

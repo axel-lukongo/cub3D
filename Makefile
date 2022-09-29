@@ -10,6 +10,7 @@ SRCS =	main.c\
 		parsing_map/init_all.c\
 		parsing_map/parsing_map.c\
 		parsing_map/parsing_texture.c\
+		parsing_map/parsing_texture_utils.c\
 		rendering/my_draw.c\
 		rendering/ft_raycast.c\
 		my_event/game_event.c\

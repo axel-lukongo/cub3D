@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 11:36:00 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 13:55:03 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,9 @@ void	init_struct(t_data *data);
 void	init_raycast(t_data *data, int x);
 int		init_buf(t_data *data);
 void	destroy(t_data *data);
+int		check_info(t_data *data);
+int		check_access_file(t_data *data);
+int		check_color(t_data *data);
 void	close_my_game(t_data *data, int flag);
 void	free_file(t_data *data);
 void	free_texture(t_data *data);

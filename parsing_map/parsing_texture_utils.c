@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 13:52:43 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 19:04:35 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 21:07:13 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_color(t_data *data)
 	char	**str;
 
 	str = ft_split(data->color_ceil, ',');
-	if (str[0] && str[1] && str[2])
+	if (str[0] && str[1] && str[2] && !str[3])
 	{
 		if (ft_isdigit(str[0]) > 0 && ft_isdigit(str[1]) > 0
 			&& ft_isdigit(str[2]) > 0)
@@ -60,7 +60,7 @@ int	check_access_file(t_data *data)
 {
 	int		fd;
 
-	fd = open(data->so, O_RDONLY);
+	fd = open(data->so + 2, O_RDONLY);
 	if (fd < 0)
 		return (ERROR);
 	close(fd);
@@ -76,5 +76,19 @@ int	check_access_file(t_data *data)
 	if (fd < 0 || check_color(data) == ERROR)
 		return (ERROR);
 	close(fd);
+	return (GOOD);
+}
+
+int	check_e(char *str)
+{
+	char	**tab;
+
+	tab = ft_split(str, ' ');
+	if (tab[2] && tab[2][0] != '\n')
+	{
+		my_free_alloc(tab);
+		return (0);
+	}
+	my_free_alloc(tab);
 	return (GOOD);
 }

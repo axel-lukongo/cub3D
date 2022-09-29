@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 19:04:28 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/29 21:01:10 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void	draw(t_data *data, int x);
 void	draw_cardinal_texture(t_data *data);
 void	init_null(t_data *data);
 void	init_struct(t_data *data);
+int		check_e(char *str);
 void	init_raycast(t_data *data, int x);
 int		init_buf(t_data *data);
 void	destroy(t_data *data);

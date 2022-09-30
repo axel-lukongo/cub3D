@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 21:33:17 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 20:29:30 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:44:15 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ char	*my_cpy(char *dest, char *src, char *to_skip)
 	while (src[i] == ' ')
 		i++;
 	dest = ft_strncpy(dest, src + i, ft_strlen2(src));
+	// printf("----------dest: %s-----------\n", dest);
 	return (dest);
 }

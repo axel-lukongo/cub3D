@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 13:52:43 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 21:07:13 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:30:07 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,39 @@ int	check_info(t_data *data)
 	return (GOOD);
 }
 
+static int	check_color_util(char *str)
+{
+	int	size;
+	int	i;
+	int	count;
+
+	count = 0;
+	i = -1;
+	size = ft_strlen(str);
+	while (++i < size)
+	{
+		if (str[i] == ',')
+			count++;
+	}
+	if (count != 2)
+		return (0);
+	return (GOOD);
+}
+
 int	check_color(t_data *data)
 {
 	char	**str;
 
+	check_color_util(data->color_ceil);
 	str = ft_split(data->color_ceil, ',');
-	if (str[0] && str[1] && str[2] && !str[3])
+	if (check_color_util(data->color_ceil))
 	{
 		if (ft_isdigit(str[0]) > 0 && ft_isdigit(str[1]) > 0
 			&& ft_isdigit(str[2]) > 0)
 		{
 			my_free_alloc(str);
 			str = ft_split(data->color_floor, ',');
-			if (str[0] && str[1] && str[2])
+			if (check_color_util(data->color_floor))
 			{
 				if (ft_isdigit(str[0]) > 0 && ft_isdigit(str[1]) > 0
 					&& ft_isdigit(str[2]) > 0)
@@ -79,12 +99,20 @@ int	check_access_file(t_data *data)
 	return (GOOD);
 }
 
+/**
+ * @brief here i check if i have only 3 element for the texture
+ * ((side of texture and name of texture))
+ * i check if i have only 2 element for the color
+ * (floor or ceiling and the RGB)
+ * @param str 
+ * @return int 
+ */
 int	check_e(char *str)
 {
 	char	**tab;
 
 	tab = ft_split(str, ' ');
-	if (tab[2] && tab[2][0] != '\n')
+	if (ft_tab_height(tab) != 2)
 	{
 		my_free_alloc(tab);
 		return (0);

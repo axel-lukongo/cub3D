@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 21:01:10 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:26:29 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define GOOD 1
 # define ERROR -1
 # define TEXHEIGHT 64
-# define WIDTH 1100
-# define HEIGHT 1000
+# define WIDTH 1400
+# define HEIGHT 800
 # define K_A 97
 # define K_D 100
 # define K_LEFT 65361
@@ -141,6 +141,7 @@ int		check_content_map(char **map, t_data *data);
 int		init_file(t_data *data, char *file);
 int		ft_strlen(char *s);
 int		ft_strlen2(char *s);
+int		ft_tab_height(char **tab);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_isdigit(char *str);
 char	*my_cpy(char *dest, char *src, char *to_skip);

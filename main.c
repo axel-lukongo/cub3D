@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:28:15 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 19:04:35 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:28:41 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,6 @@ void	ft_raycasting(t_data *data, int x)
 		add_texture(data, x, data->raycast.draw_start);
 		draw(data, x);
 	}
-}
-
-void	init_null(t_data *data)
-{
-	data->map = NULL;
-	data->file = NULL;
-	data->mlx = NULL;
-	data->win = NULL;
-	data->texture = NULL;
-	data->so = NULL;
-	data->no = NULL;
-	data->we = NULL;
-	data->ea = NULL;
-	data->color_floor = NULL;
-	data->color_ceil = NULL;
 }
 
 /**

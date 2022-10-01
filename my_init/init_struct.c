@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:28:57 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/27 13:39:36 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:28:27 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,19 @@ int	init_buf(t_data *data)
 	if (init_texture(data) == ERROR)
 		return (ERROR);
 	return (GOOD);
+}
+
+void	init_null(t_data *data)
+{
+	data->map = NULL;
+	data->file = NULL;
+	data->mlx = NULL;
+	data->win = NULL;
+	data->texture = NULL;
+	data->so = NULL;
+	data->no = NULL;
+	data->we = NULL;
+	data->ea = NULL;
+	data->color_floor = NULL;
+	data->color_ceil = NULL;
 }

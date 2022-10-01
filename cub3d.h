@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
-/*   Updated: 2022/10/01 20:35:29 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:42:51 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,28 +117,52 @@ typedef struct s_data
 	t_img			img;
 }				t_data;
 
-int						key_press(int key, t_data *data);
-int						mouse_event(t_data *data);
+/*****************************************************************
+*                            main.c                         *
+******************************************************************/
 int						start_game(t_data *data);
+
+/*****************************************************************
+*                            my_event                            *
+******************************************************************/
+int						key_press(int key, t_data *data);
+int						ft_keys_release(int keycode, t_data *data);
+int						mouse_event(t_data *data);
 void					load_image(t_data *data, int *texture, char *path, t_img *img);
 int						my_add_color(t_data *data, int x, int y);
 void					load_texture(t_data *data);
 void					draw(t_data *data, int x);
+void					draw_sky_floor(t_data *data, int color_ceil, int color_floor, int x);
 void					draw_cardinal_texture(t_data *data);
+/*****************************************************************
+*                            init_struct                         *
+******************************************************************/
 void					init_null(t_data *data);
 void					init_struct(t_data *data);
-int						check_e(char *str);
+float					set_position(t_data *data, char value);
 void					init_raycast(t_data *data, int x);
 int						init_buf(t_data *data);
-void					destroy(t_data *data);
+/*****************************************************************
+*                            parsing_map                         *
+******************************************************************/
+int						check_e(char *str);
 int						check_info(t_data *data);
 int						check_access_file(t_data *data);
 int						check_color(t_data *data);
+int						check_texture(t_data *data);
+/*****************************************************************
+*                            stop_game                           *
+******************************************************************/
 void					close_my_game(t_data *data, int flag);
 void					free_file(t_data *data);
+void					destroy(t_data *data);
 void					free_texture(t_data *data);
 int						check_content_map(char **map, t_data *data);
 int						init_file(t_data *data, char *file);
+
+/*****************************************************************
+*                            functions                           *
+******************************************************************/
 int						ft_strlen(char *s);
 int						ft_strlen_nl(char *s);
 int						ft_tab_height(char **tab);
@@ -150,14 +174,13 @@ char					*ft_strncpy(char *dest, char *src, unsigned int n);
 char					**ft_split(char const *s, char c);
 void					my_free_alloc(char **tab);
 unsigned long int		ft_atoi(const char *str);
-int						check_texture(t_data *data);
-int						ft_keys_release(int keycode, t_data *data);
+int						ft_convert_color(char *str);
+/*****************************************************************
+*                            ft_raycast                          *
+******************************************************************/
 void					define_step(t_data *data);
 void					dda_function(t_data *data);
 void					draw_start_end(t_data *data);
 void					add_texture(t_data *data, int x, int y);
-float					set_position(t_data *data, char value);
-int						ft_convert_color(char *str);
-void					draw_sky_floor(t_data *data, int color_ceil, int color_floor, int x);
 
 #endif // !CUB3D_H

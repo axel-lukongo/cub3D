@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
-/*   Updated: 2022/10/01 21:42:51 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:47:41 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,17 +123,21 @@ typedef struct s_data
 int						start_game(t_data *data);
 
 /*****************************************************************
+*                            rendering                           *
+******************************************************************/
+// int						my_add_color(t_data *data, int x, int y);
+void					load_texture(t_data *data);
+void					draw(t_data *data, int x);
+void					draw_sky_floor(t_data *data, int color_ceil, int color_floor, int x);
+void					draw_cardinal_texture(t_data *data);
+void					load_image(t_data *data, int *texture, char *path, t_img *img);
+
+/*****************************************************************
 *                            my_event                            *
 ******************************************************************/
 int						key_press(int key, t_data *data);
 int						ft_keys_release(int keycode, t_data *data);
 int						mouse_event(t_data *data);
-void					load_image(t_data *data, int *texture, char *path, t_img *img);
-int						my_add_color(t_data *data, int x, int y);
-void					load_texture(t_data *data);
-void					draw(t_data *data, int x);
-void					draw_sky_floor(t_data *data, int color_ceil, int color_floor, int x);
-void					draw_cardinal_texture(t_data *data);
 /*****************************************************************
 *                            init_struct                         *
 ******************************************************************/

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 20:02:37 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 11:40:42 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:53:34 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ float	set_position(t_data *data, char value)
 	while (++i < (data->row - (data->begin_map)))
 	{
 		j = -1;
-		while (++j < ft_strlen2(data->map[i]))
+		while (++j < ft_strlen_nl(data->map[i]))
 		{
 			if (data->map[i][j] == 'N' || data->map[i][j] == 'S' ||
 				data->map[i][j] == 'E' || data->map[i][j] == 'W')

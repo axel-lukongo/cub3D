@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 01:40:22 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/29 18:43:24 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/01 20:40:08 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ char	**init_map(t_data *data)
 		i++;
 		begin_map++;
 	}
+	replace_by(map, ' ', '1');
 	return (map);
 }
 

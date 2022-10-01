@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 15:29:22 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/26 21:47:53 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/01 20:30:48 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_doublons(t_data *data)
 		j = -1;
 		if (!data->file[++i])
 			break ;
-		while (++j < ft_strlen2(data->file[i]))
+		while (++j < ft_strlen_nl(data->file[i]))
 		{
 			if (data->file[i][j] == 'N' || data->file[i][j] == 'S'
 			|| data->file[i][j] == 'E' || data->file[i][j] == 'W')
@@ -122,7 +122,8 @@ int	verif_map(char **map, int i, int j)
 			return (ERROR);
 	}
 	else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'N'
-		&& map[i][j] != 'S' && map[i][j] != 'E' && map[i][j] != 'W')
+		&& map[i][j] != 'S' && map[i][j] != 'E' && map[i][j] != 'W'
+		&& map[i][j] != ' ')
 		return (ERROR);
 	return (GOOD);
 }
@@ -144,8 +145,7 @@ int	check_content_map(char **map, t_data *data)
 			i++;
 		while (map[i] && map[i][j] == ' ')
 			j++;
-		if (j >= ft_strlen(map[i]) || map[i][j] != '1' ||
-			map[i][ft_strlen2(map[i]) - 1] != '1')
+		if (j >= ft_strlen(map[i]) || map[i][j] != '1')
 			return (ERROR);
 		while (j < ft_strlen(map[i]) - 2)
 		{

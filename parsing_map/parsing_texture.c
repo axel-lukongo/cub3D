@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 18:58:14 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/30 17:52:09 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/01 20:40:47 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static int	init_texture_and_color(t_data *data, int nb_data, int i, int index)
 		data->s = data->file[i];
 		while (data->s[index] == ' ')
 			index++;
-		if (!check_e(data->s) || data->s[index] == '.' || data->s[index] == '/')
+		if (!check_e(data->s))
 			return (ERROR);
 		if (init_texture2(data, data->s, index) != 2)
 		{

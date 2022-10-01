@@ -6,18 +6,18 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 10:06:12 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/23 12:45:45 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/01 18:52:32 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../cub3d.h"
 
 //good
-int	ft_atoi(const char *str)
+unsigned long int	ft_atoi(const char *str)
 {
-	long	i;
-	int		signe;
-	int		nbr;
+	long					i;
+	int						signe;
+	unsigned long long int	nbr;
 
 	nbr = 0;
 	signe = 1;

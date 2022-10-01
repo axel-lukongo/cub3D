@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 13:52:43 by alukongo          #+#    #+#             */
-/*   Updated: 2022/09/30 18:30:07 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/01 20:59:40 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,13 @@ int	check_e(char *str)
 	char	**tab;
 
 	tab = ft_split(str, ' ');
-	if (ft_tab_height(tab) != 2)
+	if (ft_tab_height(tab) != 2 || ft_strlen_nl(tab[1]) < 4)
 	{
+		if (ft_tab_height(tab) == 3 && !ft_strncmp(tab[2], "\n", 1))
+		{
+			my_free_alloc(tab);
+			return (GOOD);
+		}
 		my_free_alloc(tab);
 		return (0);
 	}

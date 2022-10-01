@@ -6,12 +6,18 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 11:43:45 by alukongo          #+#    #+#             */
-/*   Updated: 2022/10/01 18:52:29 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:10:36 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../cub3d.h"
-//good
+
+/**
+ * @brief i check if is a digit and if im bigger than 0 and smaller than 255
+ * 
+ * @param str 
+ * @return int 
+ */
 int	ft_isdigit(char *str)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 13:52:43 by alukongo          #+#    #+#             */
-/*   Updated: 2022/10/01 20:59:40 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:11:08 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ static int	check_color_util(char *str)
 	return (GOOD);
 }
 
+/**
+ * @brief here i check if i only have a digit in my RGB number,
+ * and if i have only 2 ','
+ * 
+ * @param data 
+ * @return int 
+ */
 int	check_color(t_data *data)
 {
 	char	**str;
@@ -76,6 +83,12 @@ int	check_color(t_data *data)
 	return (ERROR);
 }
 
+/**
+ * @brief here i check if the path is valid
+ * 
+ * @param data 
+ * @return int 
+ */
 int	check_access_file(t_data *data)
 {
 	int		fd;
@@ -100,7 +113,7 @@ int	check_access_file(t_data *data)
 }
 
 /**
- * @brief here i check if i have only 3 element for the texture
+ * @brief here i check if i have only 2 element for the texture
  * ((side of texture and name of texture))
  * i check if i have only 2 element for the color
  * (floor or ceiling and the RGB)

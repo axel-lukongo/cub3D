@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 13:52:43 by alukongo          #+#    #+#             */
-/*   Updated: 2022/10/01 21:11:08 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/03 00:58:36 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	check_access_file(t_data *data)
 	if (fd < 0)
 		return (ERROR);
 	close(fd);
-		fd = open(data->no, O_RDONLY);
+	fd = open(data->no, O_RDONLY);
 	if (fd < 0)
 		return (ERROR);
 	close(fd);
@@ -123,6 +123,7 @@ int	check_access_file(t_data *data)
 int	check_e(char *str)
 {
 	char	**tab;
+	int		val;
 
 	tab = ft_split(str, ' ');
 	if (ft_tab_height(tab) != 2 || ft_strlen_nl(tab[1]) < 4)
@@ -135,6 +136,15 @@ int	check_e(char *str)
 		my_free_alloc(tab);
 		return (0);
 	}
+	if (ft_tab_height(tab) >= 2)
+	{
+		val = ft_strlen(tab[1]) - 2;
+		if (tab[1][val] == '/')
+		{
+			my_free_alloc(tab);
+			return (0);
+		}
+	} 
 	my_free_alloc(tab);
 	return (GOOD);
 }

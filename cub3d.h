@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 21:14:24 by alukongo          #+#    #+#             */
-/*   Updated: 2022/10/01 21:47:41 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/03 13:15:03 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ typedef struct s_data
 }				t_data;
 
 /*****************************************************************
-*                            main.c                         *
+*                            main.c                              *
 ******************************************************************/
 int						start_game(t_data *data);
 
@@ -128,10 +128,11 @@ int						start_game(t_data *data);
 // int						my_add_color(t_data *data, int x, int y);
 void					load_texture(t_data *data);
 void					draw(t_data *data, int x);
-void					draw_sky_floor(t_data *data, int color_ceil, int color_floor, int x);
+void					draw_sky_floor(t_data *data, int color_ceil,
+							int color_floor, int x);
 void					draw_cardinal_texture(t_data *data);
-void					load_image(t_data *data, int *texture, char *path, t_img *img);
-
+void					load_image(t_data *data, int *texture,
+							char *path, t_img *img);
 /*****************************************************************
 *                            my_event                            *
 ******************************************************************/

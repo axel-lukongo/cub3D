@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 13:52:43 by alukongo          #+#    #+#             */
-/*   Updated: 2022/10/03 00:58:36 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/03 13:27:05 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ int	check_e(char *str)
 			my_free_alloc(tab);
 			return (0);
 		}
-	} 
+	}
 	my_free_alloc(tab);
 	return (GOOD);
 }

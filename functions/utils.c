@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 12:46:55 by alukongo          #+#    #+#             */
-/*   Updated: 2022/10/01 20:34:58 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/03 13:14:04 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	replace_by(char **tab, char old, char new)
 {
 	int	i;
 	int	j;
-	int height;
+	int	height;
 
 	height = ft_tab_height(tab);
 	i = 0;

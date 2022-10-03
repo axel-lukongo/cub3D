@@ -6,7 +6,7 @@
 /*   By: alukongo <alukongo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 10:06:12 by alukongo          #+#    #+#             */
-/*   Updated: 2022/10/01 18:52:32 by alukongo         ###   ########.fr       */
+/*   Updated: 2022/10/03 13:48:10 by alukongo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,17 @@ unsigned long int	ft_atoi(const char *str)
 	nbr = 0;
 	signe = 1;
 	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	if (str)
 	{
-		if (str[i] == '+')
-			signe = signe * 1;
-		if (str[i] == '-')
-			signe = signe * (-1);
-		i++;
+		while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+			i++;
+		while (str[i] >= '0' && str[i] <= '9')
+		{
+			nbr = nbr * 10 + str[i] - 48;
+			i++;
+		}
+		nbr = nbr * signe;
+		return (nbr);
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nbr = nbr * 10 + str[i] - 48;
-		i++;
-	}
-	nbr = nbr * signe;
-	return (nbr);
+	return (ERROR);
 }
